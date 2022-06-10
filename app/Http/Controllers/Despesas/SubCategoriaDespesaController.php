@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Departamentos;
+namespace App\Http\Controllers\Despesas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Departamentos\Departamento;
+use App\Models\Despesas\CategoriaDespesa;
+use App\Models\Despesas\SubCategoriaDespesa;
 
-use CArbon\Carbon;
+use Carbon\Carbon;
 
-class DepartamentoController extends Controller
+class SubCategoriaDespesaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +19,12 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::orderBy('departamento', 'ASC')->get();
+        $categorias = CategoriaDespesa::orderBy('categoria_despesa', 'ASC')->get();
+        $sub_categorias = SubCategoriaDespesa::orderBy('sub_categoria_despesa', 'ASC')->get();
 
-        return view('app.departamentos.departamento.departamento_index', compact('departamentos'));
+        return view('app.despesas.sub_categoria_despesa.sub_categoria_despesa_index', compact('categorias', 'sub_categorias'));
     }
-   
-   
+
     /**
      * Store a newly created resource in storage.
      *
@@ -31,22 +32,29 @@ class DepartamentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
         $request->validate([
-            'departamento' => 'required'
+            'categoria_despesa_id' => 'required',
+            'sub_categoria_despesa' => 'required'
         ], [
-            'departamento.required' => 'Insira um nome para este departamento.'
+            'categoria_despesa_id.required' => 'Selecione uma categoria.',
+            'sub_categoria_despesa.required' => 'Insira um nome para essa sub categoria.'
         ]);
 
-        Departamento::insert([
-            'departamento' => $request->departamento,
+        SubCategoriaDespesa::insert([
+            'categoria_despesa_id' => $request->categoria_despesa_id,
+            'sub_categoria_despesa' => $request->sub_categoria_despesa,
             'created_at' => Carbon::now()
         ]);
+        
+       
 
         $noti = [
-            'message' => 'Departamento inserido com sucesso!',
+            'message' => 'Sub Categoria de Despesas inserida com sucesso.',
             'alert-type' => 'success'
         ];
+
+        
 
         return redirect()->back()->with($noti);
     }
@@ -93,13 +101,19 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        Departamento::findOrFail($id)->delete();
+        SubCategoriaDespesa::findOrFail($id)->delete();
 
         $noti = [
-            'message' => 'Departamento excluído com sucesso!',
+            'message' => 'Sub Categoria removida com sucesso!',
             'alert-type' => 'error'
         ];
 
         return redirect()->back()->with($noti);
+    }
+
+    public function getCategoria($categoria_despesa_id) {
+        $sub_categoria = SubCategoriaDespesa::where('categoria_despesa_id', $categoria_despesa_id)->orderBy('sub_categoria_despesa', 'ASC')->get();
+
+        return json_encode($sub_categoria);
     }
 }

@@ -25,7 +25,7 @@
                     </div>
 
                     <!-- Footer -->
-                    @include('layouts.footer')
+                    {{-- @include('layouts.footer') --}}
 
                     <div class="content-backdrop fade"></div>
                 </div>

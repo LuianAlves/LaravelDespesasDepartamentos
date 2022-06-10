@@ -74,67 +74,42 @@
                 <div data-i18n="Support">Departamentos</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="{{route('categoria-despesa.index')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-category"></i>
-                <div data-i18n="Support">Categoria de Despesas</div>
-            </a>
-        </li>
 
-        <!--*************** DIVISOR **************** -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Cadastros</span></li>
-
-        <li class="menu-item">
-            <a href="{{route('despesa.index')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-building"></i>
-                <div data-i18n="Support">Orçamento</div>
-            </a>
-        </li>
-
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Template</span></li>
-        <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Layouts</div>
+                <i class="menu-icon tf-icons bx bx-category"></i>
+                <div data-i18n="Layouts">Despesas</div>
             </a>
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
-                        <div data-i18n="Without menu">Without menu</div>
+                    <a href="{{route('categoria-despesa.index')}}" class="menu-link">
+                        <div data-i18n="Support">Categoria</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">Without navbar</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-container.html" class="menu-link">
-                        <div data-i18n="Container">Container</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-fluid.html" class="menu-link">
-                        <div data-i18n="Fluid">Fluid</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-blank.html" class="menu-link">
-                        <div data-i18n="Blank">Blank</div>
+                    <a href="{{route('sub-categoria-despesa.index')}}" class="menu-link">
+                        <div data-i18n="Support">Sub Categoria</div>
                     </a>
                 </li>
             </ul>
         </li>
 
-        <!-- Misc -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+        
         <li class="menu-item">
-            <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
-                class="menu-link">
-                <i class="menu-icon tf-icons bx bx-support"></i>
-                <div data-i18n="Support">Support</div>
+            <a href="{{route('metodo-pagamento.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-money"></i>
+                <div data-i18n="Support">Métodos de Pagamento</div>
+            </a>
+        </li>
+
+        <!--*************** DIVISOR **************** -->
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Despesas</span></li>
+
+        <li class="menu-item">
+            <a href="{{route('despesa.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-building"></i>
+                <div data-i18n="Support">Orçamento</div>
             </a>
         </li>
 

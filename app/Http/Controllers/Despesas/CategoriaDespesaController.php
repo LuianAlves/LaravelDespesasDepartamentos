@@ -20,7 +20,7 @@ class CategoriaDespesaController extends Controller
     {
         $categorias = CategoriaDespesa::orderBy('categoria_despesa', 'ASC')->get();
 
-        return view('app.despesas.categoria_despesas.categoria_despesa_index', compact('categorias'));
+        return view('app.despesas.categoria_despesa.categoria_despesa_index', compact('categorias'));
     }
 
     /**

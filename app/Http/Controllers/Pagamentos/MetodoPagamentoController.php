@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Departamentos;
+namespace App\Http\Controllers\Pagamentos;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Departamentos\Departamento;
+use App\Models\Pagamentos\MetodoPagamento;
 
-use CArbon\Carbon;
+use Carbon\Carbon;
 
-class DepartamentoController extends Controller
+class MetodoPagamentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +18,11 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::orderBy('departamento', 'ASC')->get();
+        $metodos_pagamento = MetodoPagamento::orderBy('metodo_pagamento', 'ASC')->get();
 
-        return view('app.departamentos.departamento.departamento_index', compact('departamentos'));
+        return view('app.pagamentos.metodo_pagamento.metodo_pagamento_index',compact('metodos_pagamento'));
     }
-   
-   
+
     /**
      * Store a newly created resource in storage.
      *
@@ -33,18 +32,18 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'departamento' => 'required'
+            'metodo_pagamento' => 'required'
         ], [
-            'departamento.required' => 'Insira um nome para este departamento.'
+            'metodo_pagamento.required' => 'Insira um método de pagamento.'
         ]);
 
-        Departamento::insert([
-            'departamento' => $request->departamento,
+        MetodoPagamento::insert([
+            'metodo_pagamento' => $request->metodo_pagamento,
             'created_at' => Carbon::now()
         ]);
 
         $noti = [
-            'message' => 'Departamento inserido com sucesso!',
+            'message' => 'Método de pagamento inserido com sucesso!',
             'alert-type' => 'success'
         ];
 
@@ -93,10 +92,10 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        Departamento::findOrFail($id)->delete();
+        MetodoPagamento::findOrFail($id)->delete();
 
         $noti = [
-            'message' => 'Departamento excluído com sucesso!',
+            'message' => 'Método de Pagamento removido com sucesso!',
             'alert-type' => 'error'
         ];
 

@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Models\Despesas;
+namespace App\Models\Pagamentos;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriaDespesa extends Model
+class MetodoPagamento extends Model
 {
     use HasFactory;
-
-    protected $guarded = [];
 }
