@@ -29,13 +29,22 @@ Route::middleware([
 // ------------------------------------------------------------------
 
 
-Route::resource('/departamento', DepartamentoController::class)->except('create');
+Route::post('/departamento/update', [DepartamentoController::class, 'update'])->name('departamento.update');
+Route::resource('/departamento', DepartamentoController::class)->except('create', 'update');
 
 Route::resource('/despesa', DespesaController::class)->except('create');
-Route::resource('/categoria-despesa', CategoriaDespesaController::class)->except('create');
 
-Route::resource('/sub-categoria-despesa', SubCategoriaDespesaController::class)->except('create');
-Route::get('/sub-categoria-despesa/ajax/{categoria_despesa_id}', [SubCategoriaDespesaController::class, 'getCategoria']);
+Route::post('/categoria-despesa/update', [CategoriaDespesaController::class, 'update'])->name('categoria-despesa.update'); 
+Route::resource('/categoria-despesa', CategoriaDespesaController::class)->except('create', 'update');
 
-Route::resource('/metodo-pagamento', MetodoPagamentoController::class)->except('create');
+Route::get('/sub-categoria-despesa/ajax/{categoria_despesa_id}', [SubCategoriaDespesaController::class, 'getCategoria']); // AJAX
+Route::post('/sub-categoria-despesa/update', [SubCategoriaDespesaController::class, 'update'])->name('sub-categoria-despesa.update');
+Route::resource('/sub-categoria-despesa', SubCategoriaDespesaController::class)->except('create', 'update');
 
+Route::post('/metodo-pagamento/update', [MetodoPagamentoController::class, 'update'])->name('metodo-pagamento.update');
+Route::resource('/metodo-pagamento', MetodoPagamentoController::class)->except('create', 'update');
+
+
+
+// Exportar arquivo Excel
+Route::get('/export/despesas', [DashboardController::class, 'exportDespesas'])->name('export.despesas');

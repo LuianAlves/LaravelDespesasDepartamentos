@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Pagamentos\MetodoPagamento;
 
 use Carbon\Carbon;
+use Validator;
+use Response;
 
 class MetodoPagamentoController extends Controller
 {
@@ -69,7 +71,11 @@ class MetodoPagamentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $metodo = MetodoPagamento::findOrFail($id);
+
+        return response()->json([
+            'metodo' => $metodo
+        ]);
     }
 
     /**
@@ -79,9 +85,27 @@ class MetodoPagamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'metodo_pagamento' => 'required',
+            
+        ], [     
+            'metodo_pagamento.required' => 'Insira um nome para esse método de pagamento.',
+        ]);
+
+        $id = $request->metodo_pagamento_id;
+
+        if ($validator->passes()) {
+            MetodoPagamento::findOrFail($id)->update([
+                'metodo_pagamento' => $request->metodo_pagamento,
+                'updated_at' => Carbon::now()
+            ]); 
+            
+            return Response::json(['success' => '1']);
+        }
+            
+        return Response::json(['errors' => $validator->errors()]);
     }
 
     /**

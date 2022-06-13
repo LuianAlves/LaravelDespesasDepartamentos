@@ -18,6 +18,7 @@
                             <div class="col-6">
                                 <label for="categoria_despesa_id" class="form-label">Categoria <span class="text-danger fw-bold"> *</span></label>
                                 <select name="categoria_despesa_id" id="categoria_despesa_id" class="form-select">
+                                    <option selected disabled>Selecione uma Categoria de Despesa</option>
                                     @foreach ($categorias as $despesa)
                                         <option id="categoria_despesa_{{ $despesa->id }}" value="{{ $despesa->id }}">
                                             {{ $despesa->categoria_despesa }}</option>
@@ -30,7 +31,7 @@
                             <div class="col-6">
                                 <label class="form-label" for="sub_categoria_despesa_input">Sub Categoria <span class="text-danger fw-bold"> *</span></label>
                                 <div class="input-group input-group-merge">
-                                    <span id="sub_categoria_despesa_input" class="input-group-text"><i class="bx bx-categoria"></i></span>
+                                    <span id="sub_categoria_despesa_input" class="input-group-text"><i class="bx bx-category"></i></span>
                                     <input type="text" name="sub_categoria_despesa" id="sub_categoria_despesa" class="form-control"
                                         placeholder="Despesa com combustíveis ..">
                                 </div>
@@ -83,14 +84,20 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
+                                            <!-- Editar -->
+                                            <button type="button" class="dropdown-item editbtn" value="{{$sub->id}}">
+                                                <i class="bx bx-edit-alt me-1"></i>
+                                                <small>Editar Sub Categoria</small>
+                                            </button>
+
                                             <form id="removeSubCategoria_{{$sub->id}}" action="{{route('sub-categoria-despesa.destroy', $sub->id)}}" method="post">
                                                 @csrf    
                                                 @method('DELETE')
                                                 
                                                 <a type="button" id="removeSubCategoria_{{$sub->id}}" class="dropdown-item"
                                                     onclick="document.getElementById('removeSubCategoria_{{$sub->id}}').submit()">
-                                                    <i class="bx bx-trash text-danger me-1"></i>
-                                                    Apagar Sub Categoria
+                                                    <i class="bx bx-trash me-1"></i>
+                                                    <small>Apagar Sub Categoria</small>
                                                 </a>
                                             </form>
                                         </div>
@@ -104,4 +111,10 @@
             </div>
         </div>  
     </div>
+
+    <!-- Include Scripts -->
+    @include('app.despesas.sub_categoria_despesa.sub_categoria_despesa_scripts')
+    
+    <!-- Include Editar-->
+    @include('app.despesas.sub_categoria_despesa.sub_categoria_despesa_edit')
 @endsection

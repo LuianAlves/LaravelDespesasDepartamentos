@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <!-- Card Count Despesas -->
+    {{-- <!-- Card Count Despesas -->
     <div class="row">
         <div class="col-4 mb-4">
             <div class="card">
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- CARD:Adicionar Despesas -->
     <div class="row">
@@ -58,6 +58,7 @@
                                 <label for="categoria_despesa_id" class="form-label">Categoria <span
                                         class="text-danger fw-bold"> *</span></label>
                                 <select name="categoria_despesa_id" id="categoria_despesa_id" class="form-select">
+                                    <option selected disabled>Selecione uma Categoria</option>
                                     @foreach ($categorias as $despesa)
                                         <option id="categoria_despesa_{{ $despesa->id }}" value="{{ $despesa->id }}">
                                             {{ $despesa->categoria_despesa }}</option>
@@ -211,6 +212,8 @@
                                                 <i class="bx bx-dots-vertical-rounded"></i>
                                             </button>
                                             <div class="dropdown-menu">
+                                                
+
                                                 <form id="removeDespesa_{{$despesa->id}}" action="{{route('despesa.destroy', $despesa->id)}}" method="post">
                                                     @csrf    
                                                     @method('DELETE')
@@ -234,32 +237,4 @@
     </div>
 @endsection
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $('select[name="categoria_despesa_id"]').on('change', function() {
-            var categoria_despesa_id = $(this).val()
-
-            if (categoria_despesa_id) {
-                $.ajax({
-                    url: "{{ url('/sub-categoria-despesa/ajax') }}/" + categoria_despesa_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                        console.log(data)
-                        var d = $('select[name="sub_categoria_despesa_id"]').empty()
-                        $.each(data, function(key, value) {
-                            // console.log(value.codigo_turma)
-                            $('select[name="sub_categoria_despesa_id"]').append(
-                                '<option value="' + value.id + '">' + value
-                                .sub_categoria_despesa + '</option>')
-                        })
-                    },
-                })
-            } else {
-                alert('Error!')
-            }
-        })
-    })
-</script>
+@include('app.despesas.despesa.despesa_scripts')

@@ -15,7 +15,8 @@
 
                         <div class="row mb-4">
                             <div class="col-12">
-                                <label class="form-label" for="metodo_pagamento_input">Método de Pagamento</label>
+                                <label class="form-label" for="metodo_pagamento_input">Método de Pagamento <span
+                                    class="text-danger fw-bold"> *</span></label>
                                 <div class="input-group input-group-merge">
                                     <span id="metodo_pagamento_input" class="input-group-text"><i
                                             class="bx bx-money"></i></span>
@@ -67,6 +68,12 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
+                                            <!-- Editar -->
+                                            <button type="button" class="dropdown-item editbtn" value="{{$metodo->id}}">
+                                                <i class="bx bx-edit-alt me-1"></i>
+                                                <small>Editar Método de Pagamento</small>
+                                            </button>
+
                                             <form id="removeMetodo_{{$metodo->id}}" action="{{route('metodo-pagamento.destroy', $metodo->id)}}" method="post">
                                                 @csrf    
                                                 @method('DELETE')
@@ -88,4 +95,10 @@
             </div>
         </div>  
     </div>
+
+    <!-- Include Scripts -->
+    @include('app.pagamentos.metodo_pagamento.metodo_pagamento_scripts')
+    
+    <!-- Include Edit -->
+    @include('app.pagamentos.metodo_pagamento.metodo_pagamento_edit')
 @endsection

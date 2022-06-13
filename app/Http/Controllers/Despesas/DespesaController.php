@@ -15,11 +15,6 @@ use Carbon\Carbon;
 
 class DespesaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $departamentos = Departamento::orderBy('departamento', 'ASC')->get();
@@ -32,12 +27,6 @@ class DespesaController extends Controller
         return view('app.despesas.despesa.despesa_index', compact('departamentos', 'categorias', 'metodos_pagamento', 'despesas', 'sub_categorias', 'soma_despesas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -60,12 +49,22 @@ class DespesaController extends Controller
 
         $valor_despesa = str_replace(',', '.', $request->valor_despesa);
 
+        switch ($request->forma_pagamento) {
+            case 1:
+                $forma_pgt = 'A Vista/Débito';
+                break;
+            
+            case 2:
+                $forma_pgt = 'A Vista/Débito';    
+            break;
+        }
+
         Despesa::insert([
             'departamento_id' => $request->departamento_id,
             'categoria_despesa_id' => $request->categoria_despesa_id,
             'sub_categoria_despesa_id' => $request->sub_categoria_despesa_id,
             'metodo_pagamento_id' => $request->metodo_pagamento_id,
-            'forma_pagamento' => $request->forma_pagamento,
+            'forma_pagamento' => $forma_pgt,
             'despesa' => $request->despesa,
             'valor_despesa' => $valor_despesa,
             'descricao_despesa' => $request->descricao_despesa,
@@ -84,46 +83,21 @@ class DespesaController extends Controller
         return redirect()->back()->with($noti);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Despesa::findOrFail($id)->delete();

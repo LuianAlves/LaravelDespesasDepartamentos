@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Despesas\CategoriaDespesa;
 
 use Carbon\Carbon;
+use Response;
+use Validator;
 
 class CategoriaDespesaController extends Controller
 {
@@ -51,17 +53,6 @@ class CategoriaDespesaController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -69,7 +60,12 @@ class CategoriaDespesaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categoria = CategoriaDespesa::findOrFail($id);
+
+        return response()->json([
+            'status' => 200,
+            'categoria' => $categoria
+        ]);
     }
 
     /**
@@ -79,9 +75,28 @@ class CategoriaDespesaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'categoria_despesa' => 'required',
+            
+        ], [     
+            'categoria_despesa.required' => 'Insira um nome para a categoria.'
+        ]);
+
+        $id = $request->categoria_despesa_id;
+
+        if ($validator->passes()) {
+
+            CategoriaDespesa::findOrFail($id)->update([
+                'categoria_despesa' => $request->categoria_despesa,
+                'updated_at' => Carbon::now()
+            ]);
+            
+            return Response::json(['success' => '1']);
+        }
+            
+        return Response::json(['errors' => $validator->errors()]);
     }
 
     /**

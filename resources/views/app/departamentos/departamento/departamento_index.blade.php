@@ -15,7 +15,8 @@
 
                         <div class="row mb-4">
                             <div class="col-12">
-                                <label class="form-label" for="departamento_input">Departamento</label>
+                                <label class="form-label" for="departamento_input">Departamento <span
+                                    class="text-danger fw-bold"> *</span></label>
                                 <div class="input-group input-group-merge">
                                     <span id="departamento_input" class="input-group-text"><i
                                             class="bx bx-buildings"></i></span>
@@ -47,7 +48,7 @@
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <caption class="ms-4">
-                            Departamentos: <b>{{count($departamentos)}}</b>
+                            Departamentos: <b>{{ count($departamentos) }}</b>
                         </caption>
                         <thead>
                             <tr>
@@ -57,35 +58,49 @@
                         </thead>
                         <tbody>
                             @foreach ($departamentos as $departamento)
-                            <tr>
-                                <td>
-                                    <strong>{{$departamento->departamento}}</strong>
-                                </td>
-                                <td class="text-center">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <form id="removeDepartamento_{{$departamento->id}}" action="{{route('departamento.destroy', $departamento->id)}}" method="post">
-                                                @csrf    
-                                                @method('DELETE')
-                                                
-                                                <a type="button" id="removeDepartamento_{{$departamento->id}}" class="dropdown-item"
-                                                    onclick="document.getElementById('removeDepartamento_{{$departamento->id}}').submit()">
-                                                    <i class="bx bx-trash text-danger me-1"></i>
-                                                    Apagar Departamento
-                                                </a>
-                                            </form>
+                                <tr>
+                                    <td>
+                                        <strong>{{ $departamento->departamento }}</strong>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown">
+                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                 <!-- Editar -->
+                                                <button type="button" class="dropdown-item editbtn" value="{{$departamento->id}}">
+                                                    <i class="bx bx-edit-alt me-1"></i>
+                                                    <small>Editar Departamento</small>
+                                                </button>
+
+                                                <form id="removeDepartamento_{{ $departamento->id }}"
+                                                    action="{{ route('departamento.destroy', $departamento->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <a type="button" id="removeDepartamento_{{ $departamento->id }}"
+                                                        class="dropdown-item"
+                                                        onclick="document.getElementById('removeDepartamento_{{ $departamento->id }}').submit()">
+                                                        <i class="bx bx-trash  me-1"></i>
+                                                        <small>Apagar Departamento</small>
+                                                    </a>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>    
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
+
+    @include('app.departamentos.departamento.departamento_scripts')
+    @include('app.departamentos.departamento.departamento_edit')
 @endsection
+

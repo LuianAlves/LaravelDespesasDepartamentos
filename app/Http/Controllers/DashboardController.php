@@ -8,6 +8,9 @@ use App\Models\Despesas\Despesa;
 use App\Models\Departamentos\Departamento;
 use App\Models\Despesas\CategoriaDespesa;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DespesaExport;
+
 class DashboardController extends Controller
 {
     public function index() {
@@ -18,5 +21,12 @@ class DashboardController extends Controller
             'departamentos',
             'soma_despesas'
         ));
+    }
+
+    public function exportDespesas() {
+        $data_atual = date('d_m_Y');
+
+        // echo($data_atual);
+        return Excel::download(new DespesaExport, 'planilha_orçamento_'.$data_atual.'.xlsx');
     }
 }

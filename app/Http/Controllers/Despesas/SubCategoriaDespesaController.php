@@ -9,6 +9,8 @@ use App\Models\Despesas\CategoriaDespesa;
 use App\Models\Despesas\SubCategoriaDespesa;
 
 use Carbon\Carbon;
+use Validator;
+use Response;
 
 class SubCategoriaDespesaController extends Controller
 {
@@ -47,27 +49,12 @@ class SubCategoriaDespesaController extends Controller
             'created_at' => Carbon::now()
         ]);
         
-       
-
         $noti = [
             'message' => 'Sub Categoria de Despesas inserida com sucesso.',
             'alert-type' => 'success'
         ];
 
-        
-
         return redirect()->back()->with($noti);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -78,7 +65,13 @@ class SubCategoriaDespesaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subcategoria = SubCategoriaDespesa::findOrFail($id);
+        $categoria = CategoriaDespesa::where('id', $subcategoria->categoria_despesa_id)->first();
+
+        return response()->json([
+            'subcategoria' => $subcategoria,
+            'categoria' => $categoria
+        ]);
     }
 
     /**
@@ -88,9 +81,32 @@ class SubCategoriaDespesaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'categoria_despesa_id' => 'required',
+            'sub_categoria_despesa' => 'required',
+            
+        ], [     
+            'categoria_despesa_id.required' => 'Selecione uma categoria.',
+            'sub_categoria_despesa.required' => 'Insira um nome para essa sub categoria.',
+        ]);
+
+        $id = $request->sub_categoria_despesa_id;
+
+        if ($validator->passes()) {
+            
+            SubCategoriaDespesa::findOrFail($id)->update([
+                'categoria_despesa_id' => $request->categoria_despesa_id,
+                'sub_categoria_despesa' => $request->sub_categoria_despesa,
+
+                'updated_at' => Carbon::now()
+            ]); 
+            
+            return Response::json(['success' => '1']);
+        }
+            
+        return Response::json(['errors' => $validator->errors()]);
     }
 
     /**

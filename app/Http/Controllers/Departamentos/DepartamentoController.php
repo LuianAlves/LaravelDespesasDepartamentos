@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Departamentos\Departamento;
 
 use CArbon\Carbon;
+use Validator;
+use Response;
 
 class DepartamentoController extends Controller
 {
@@ -51,16 +53,6 @@ class DepartamentoController extends Controller
         return redirect()->back()->with($noti);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -68,9 +60,14 @@ class DepartamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($departamento_id)
     {
-        //
+        $departamento = Departamento::findOrFail($departamento_id);
+
+        return response()->json([
+            'status' => 200,
+            'departamento' => $departamento
+        ]);
     }
 
     /**
@@ -80,9 +77,28 @@ class DepartamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'departamento' => 'required',
+            
+        ], [     
+            'departamento.required' => 'Insira um nome para o departamento.'
+        ]);
+
+        $id = $request->departamento_id;
+
+        if ($validator->passes()) {
+
+            Departamento::findOrFail($id)->update([
+                'departamento' => $request->departamento,
+                'updated_at' => Carbon::now()
+            ]); 
+            
+            return Response::json(['success' => '1']);
+        }
+            
+        return Response::json(['errors' => $validator->errors()]);
     }
 
     /**

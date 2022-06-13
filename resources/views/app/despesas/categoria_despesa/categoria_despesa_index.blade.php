@@ -15,7 +15,8 @@
 
                         <div class="row mb-4">
                             <div class="col-12">
-                                <label class="form-label" for="categoria_input">Categoria</label>
+                                <label class="form-label" for="categoria_input">Categoria de Despesas <span
+                                    class="text-danger fw-bold"> *</span></label>
                                 <div class="input-group input-group-merge">
                                     <span id="categoria_input" class="input-group-text"><i class="bx bx-categoria"></i></span>
                                     <input type="text" name="categoria_despesa" id="categoria_despesa" class="form-control"
@@ -66,14 +67,20 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
+                                            <!-- Editar -->
+                                            <button type="button" class="dropdown-item editbtn" value="{{$categoria->id}}">
+                                                <i class="bx bx-edit-alt me-1"></i>
+                                                <small>Editar Categoria</small>
+                                            </button>
+
                                             <form id="removeCategoria_{{$categoria->id}}" action="{{route('categoria-despesa.destroy', $categoria->id)}}" method="post">
                                                 @csrf    
                                                 @method('DELETE')
                                                 
                                                 <a type="button" id="removeCategoria_{{$categoria->id}}" class="dropdown-item"
                                                     onclick="document.getElementById('removeCategoria_{{$categoria->id}}').submit()">
-                                                    <i class="bx bx-trash text-danger me-1"></i>
-                                                    Apagar categoria
+                                                    <i class="bx bx-trash me-1"></i>
+                                                    <small>Apagar categoria</small>
                                                 </a>
                                             </form>
                                         </div>
@@ -87,4 +94,10 @@
             </div>
         </div>  
     </div>
+
+    <!-- Include Scripts -->
+    @include('app.despesas.categoria_despesa.categoria_despesa_scripts')
+
+    <!-- Include Editar -->
+    @include('app.despesas.categoria_despesa.categoria_despesa_edit')
 @endsection
