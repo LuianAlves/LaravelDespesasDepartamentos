@@ -25,7 +25,6 @@ class DespesaExport implements FromCollection, ShouldAutoSize, WithMapping, With
         return Despesa::with('Departamento', 'CategoriaDespesa', 'SubCategoriaDespesa', 'MetodoPagamento')->get();
     }
     
-
     public function map($despesa) : array {
         return [
             $despesa->id,

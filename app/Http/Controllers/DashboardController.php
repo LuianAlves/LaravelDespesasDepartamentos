@@ -27,6 +27,6 @@ class DashboardController extends Controller
         $data_atual = date('d_m_Y');
 
         // echo($data_atual);
-        return Excel::download(new DespesaExport, 'planilha_orçamento_'.$data_atual.'.xlsx');
+        return (new DespesaExport())->download('planilha_orçamento_'.$data_atual.'.xlsx');
     }
 }

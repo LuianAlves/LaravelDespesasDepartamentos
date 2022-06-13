@@ -11,8 +11,7 @@
                         <h6 class="text-uppercase">Despesas Totais</h6>
                     </div>
                     <div class="p-0">
-                        <span class="btn btn-sm btn-outline-danger fw-bold">Download PDF</span>
-                        <a href="{{route('export.despesas')}}">Exportar Excel</a>                       
+                        <a href="{{route('export.despesas')}}" class="btn btn-sm btn-outline-success">Exportar Excel</a>                       
                     </div>
                 </div>
                 <div class="mt-sm-auto">
