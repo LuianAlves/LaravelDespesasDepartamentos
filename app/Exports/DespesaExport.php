@@ -60,7 +60,6 @@ class DespesaExport implements FromCollection, ShouldAutoSize, WithMapping, With
            'MÊS',
            'ANO',
            'CRIADO EM',
-           'TOTAL'
         ] ;
     }
 
