@@ -80,8 +80,8 @@
                                                 
                                                 <a type="button" id="removeMetodo_{{$metodo->id}}" class="dropdown-item"
                                                     onclick="document.getElementById('removeMetodo_{{$metodo->id}}').submit()">
-                                                    <i class="bx bx-trash text-danger me-1"></i>
-                                                    Apagar Método de Pagamento
+                                                    <i class="bx bx-trash me-1"></i>
+                                                    <small>Apagar Método de Pagamento</small>
                                                 </a>
                                             </form>
                                         </div>

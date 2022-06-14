@@ -180,7 +180,7 @@
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <caption class="ms-4">
-                            Categorias: <b>{{count($despesas)}}</b>
+                            Despesas: <b>{{count($despesas)}}</b>
                         </caption>
                         <thead>
                             <tr>

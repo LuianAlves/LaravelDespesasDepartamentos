@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('metodo_pagamentos', function (Blueprint $table) {
             $table->id();
-            $table->string('metodo_pagamento', 30);
+            $table->string('metodo_pagamento', 75);
             $table->timestamps();
         });
     }
