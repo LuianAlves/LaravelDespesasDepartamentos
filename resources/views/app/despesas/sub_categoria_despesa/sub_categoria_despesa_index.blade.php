@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
-
+    {{-- Breadcrumb --}}
+    @include('layouts.breadcrumb')
+    
     <!-- CARD:Adicionar Sub Categoria de Despesa -->
     <div class="row">
         <div class="col-12">

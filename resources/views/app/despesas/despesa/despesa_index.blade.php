@@ -1,6 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
+    {{-- Breadcrumb --}}
+    @include('layouts.breadcrumb')
+
     {{-- <!-- Card Count Despesas -->
     <div class="row">
         <div class="col-4 mb-4">

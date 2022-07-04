@@ -32,7 +32,10 @@ Route::middleware([
 
 // Auth
 Route::controller(AuthController::class)->group(function() {
-    Route::get('/deslogar', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/profile', [AuthController::class, 'profile'])->name('auth.profile-me');
+    Route::post('/profile/update', [AuthController::class, 'updateProfile'])->name('auth.profile.update');
+    Route::post('/password/update', [AuthController::class, 'updatePassword'])->name('auth.password.update');
 });
 
 

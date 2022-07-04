@@ -35,6 +35,9 @@
     <!-- Page CSS -->
     <link rel="stylesheet" href="../assets/vendor/css/pages/page-auth.css" />
     
+    {{-- Toast Notification --}}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    
     <!-- Helpers -->
     <script src="{{asset('assets/vendor/js/helpers.js')}}"></script>
 
