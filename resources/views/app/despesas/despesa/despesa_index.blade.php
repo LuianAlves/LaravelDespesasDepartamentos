@@ -4,9 +4,9 @@
     {{-- Breadcrumb --}}
     @include('layouts.breadcrumb')
 
-    {{-- <!-- Card Count Despesas -->
+    <!-- Card Count Despesas -->
     <div class="row">
-        <div class="col-4 mb-4">
+        <div class="col-6 mb-4">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
@@ -27,7 +27,28 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+        <div class="col-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                        <div class="flex-shrink-0">
+                            <h6 class="text-uppercase">Meta próximo Ano</h6>
+                        </div>
+                        <div class="p-0">
+                            <span class="badge bg-label-danger rounded-pill d-flex justify-content-end">
+                                @php $ano_atual = date('Y'); @endphp
+                                Ano {{ $ano_atual + 1 }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mt-sm-auto">
+                        <h3 class="mb-0"><strong>R$ </strong> <span
+                                class="text-muted">{{ str_replace('.', ',', $soma_metas) }}</span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- CARD:Adicionar Despesas -->
     <div class="row">
@@ -100,17 +121,19 @@
                                 @enderror
                             </div>
                             <div class="col-6">
-                                <label for="forma_pagamento" class="form-label d-block">Forma de Pagamento <span
+                                <label for="forma_pagamento" class="form-label d-block">Gasto<span
                                         class="text-danger fw-bold"> *</span></label>
                                 <div class="form-check form-check-inline mt-3">
-                                    <input class="form-check-input" type="radio" name="forma_pagamento" id="debito_avista"
-                                        value="1" checked>
-                                    <label class="form-check-label" for="debito_avista">Débito / À Vista</label>
+                                    <input class="form-check-input" type="radio" name="tipo_gasto" id="despesa" value="1" checked>
+                                    <label class="form-check-label" for="despesa">Despesa</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="forma_pagamento" id="credito"
-                                        value="2">
-                                    <label class="form-check-label" for="credito">Crédito</label>
+                                    <input class="form-check-input" type="radio" name="tipo_gasto" id="meta" value="2">
+                                    <label class="form-check-label" for="meta">Meta</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="tipo_gasto" id="despesa_meta" value="3">
+                                    <label class="form-check-label" for="despesa_meta">Despesa/Meta</label>
                                 </div>
                             </div>
                         </div>

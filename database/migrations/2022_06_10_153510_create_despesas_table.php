@@ -28,7 +28,8 @@ return new class extends Migration
             $table->unsignedBigInteger('metodo_pagamento_id')->unsigned();
             $table->foreign('metodo_pagamento_id')->references('id')->on('metodo_pagamentos')->onDelete('cascade');
 
-            $table->string('forma_pagamento');
+            $table->string('tipo_gasto');
+            
             $table->string('despesa', 75);
             $table->decimal('valor_despesa', 10,2);
 

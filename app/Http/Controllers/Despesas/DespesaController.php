@@ -22,9 +22,11 @@ class DespesaController extends Controller
         $sub_categorias = SubCategoriaDespesa::orderBy('sub_categoria_despesa', 'ASC')->get();
         $metodos_pagamento = MetodoPagamento::orderBy('metodo_pagamento')->get();
         $despesas = Despesa::orderBy('data_despesa', 'DESC')->get();
-        $soma_despesas = Despesa::sum('valor_despesa');
 
-        return view('app.despesas.despesa.despesa_index', compact('departamentos', 'categorias', 'metodos_pagamento', 'despesas', 'sub_categorias', 'soma_despesas'));
+        $soma_despesas = Despesa::where('tipo_gasto', 1)->orWhere('tipo_gasto', 3)->sum('valor_despesa');
+        $soma_metas = Despesa::where('tipo_gasto', 2)->orWhere('tipo_gasto', 3)->sum('valor_despesa');
+
+        return view('app.despesas.despesa.despesa_index', compact('departamentos', 'categorias', 'metodos_pagamento', 'despesas', 'sub_categorias', 'soma_despesas', 'soma_metas'));
     }
 
     public function store(Request $request)
@@ -34,7 +36,7 @@ class DespesaController extends Controller
             'categoria_despesa_id' => 'required',
             'sub_categoria_despesa_id' => 'required',
             'metodo_pagamento_id' => 'required',
-            'forma_pagamento' => 'required',
+            'tipo_gasto' => 'required',
             'despesa' => 'required',
             'valor_despesa' => 'required',
         ], [
@@ -42,21 +44,26 @@ class DespesaController extends Controller
             'categoria_despesa_id.required' => 'Selecione uma categoria para essa despesa.',
             'sub_categoria_despesa_id.required' => 'Selecione uma sub categoria para essa despesa.',
             'metodo_pagamento_id.required' => 'Selecione um método de pagamento para essa despesa.',
-            'forma_pagamento.required' => 'Selecione uma forma de pagamento para essa despesa.',
+            'tipo_gasto.required' => 'Selecione um tipo de gasto.',
             'despesa.required' => 'Insira um nome para essa despesa.',
             'valor_despesa.required' => 'Insira um valor para essa despesa.',
         ]);
 
         $valor_despesa = str_replace(',', '.', $request->valor_despesa);
 
-        switch ($request->forma_pagamento) {
+        switch ($request->tipo_gasto) {
             case 1:
-                $forma_pgt = 'A Vista/Débito';
+                $gasto = 'Despesa';
+                break;
+
+            case 2:
+                $gasto = 'Meta';
+                break;
+
+            case 3:
+                $gasto = 'Despesa/Meta';
                 break;
             
-            case 2:
-                $forma_pgt = 'A Vista/Débito';    
-            break;
         }
 
         Despesa::insert([
@@ -64,7 +71,9 @@ class DespesaController extends Controller
             'categoria_despesa_id' => $request->categoria_despesa_id,
             'sub_categoria_despesa_id' => $request->sub_categoria_despesa_id,
             'metodo_pagamento_id' => $request->metodo_pagamento_id,
-            'forma_pagamento' => $forma_pgt,
+
+            'tipo_gasto' => $gasto,
+
             'despesa' => $request->despesa,
             'valor_despesa' => $valor_despesa,
             'descricao_despesa' => $request->descricao_despesa,
@@ -72,6 +81,7 @@ class DespesaController extends Controller
             'dia_despesa' => Carbon::parse($request->data_despesa)->format('d'),
             'mes_despesa'=> Carbon::parse($request->data_despesa)->format('m'),
             'ano_despesa' => Carbon::parse($request->data_despesa)->format('Y'),
+            
             'created_at' => Carbon::now()
         ]);
 
