@@ -3,6 +3,8 @@
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\AuthController;
+
 use App\Http\Controllers\Departamentos\DepartamentoController;
 
 use App\Http\Controllers\Despesas\DespesaController;
@@ -28,22 +30,32 @@ Route::middleware([
 
 // ------------------------------------------------------------------
 
+// Auth
+Route::controller(AuthController::class)->group(function() {
+    Route::get('/deslogar', [AuthController::class, 'logout'])->name('auth.logout');
+});
 
-Route::post('/departamento/update', [DepartamentoController::class, 'update'])->name('departamento.update');
-Route::resource('/departamento', DepartamentoController::class)->except('create', 'update');
 
-Route::resource('/despesa', DespesaController::class)->except('create');
+// ------------------------------------------------------------------
 
-Route::post('/categoria-despesa/update', [CategoriaDespesaController::class, 'update'])->name('categoria-despesa.update'); 
-Route::resource('/categoria-despesa', CategoriaDespesaController::class)->except('create', 'update');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' ])->group(function () {
 
-Route::get('/sub-categoria-despesa/ajax/{categoria_despesa_id}', [SubCategoriaDespesaController::class, 'getCategoria']); // AJAX
-Route::post('/sub-categoria-despesa/update', [SubCategoriaDespesaController::class, 'update'])->name('sub-categoria-despesa.update');
-Route::resource('/sub-categoria-despesa', SubCategoriaDespesaController::class)->except('create', 'update');
+    Route::post('/departamento/update', [DepartamentoController::class, 'update'])->name('departamento.update');
+    Route::resource('/departamento', DepartamentoController::class)->except('create', 'update');
 
-Route::post('/metodo-pagamento/update', [MetodoPagamentoController::class, 'update'])->name('metodo-pagamento.update');
-Route::resource('/metodo-pagamento', MetodoPagamentoController::class)->except('create', 'update');
+    Route::resource('/despesa', DespesaController::class)->except('create');
 
+    Route::post('/categoria-despesa/update', [CategoriaDespesaController::class, 'update'])->name('categoria-despesa.update'); 
+    Route::resource('/categoria-despesa', CategoriaDespesaController::class)->except('create', 'update');
+
+    Route::get('/sub-categoria-despesa/ajax/{categoria_despesa_id}', [SubCategoriaDespesaController::class, 'getCategoria']); // AJAX
+    Route::post('/sub-categoria-despesa/update', [SubCategoriaDespesaController::class, 'update'])->name('sub-categoria-despesa.update');
+    Route::resource('/sub-categoria-despesa', SubCategoriaDespesaController::class)->except('create', 'update');
+
+    Route::post('/metodo-pagamento/update', [MetodoPagamentoController::class, 'update'])->name('metodo-pagamento.update');
+    Route::resource('/metodo-pagamento', MetodoPagamentoController::class)->except('create', 'update');
+
+});
 
 
 // Exportar arquivo Excel

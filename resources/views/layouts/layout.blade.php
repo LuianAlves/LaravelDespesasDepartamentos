@@ -10,27 +10,27 @@
 <body>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-
+            
             <!-- Include Sidenav -->
             @include('layouts.sidenav')
 
-            <div class="layout-page">
-                <!-- Include Navbar -->
-                @include('layouts.navbar')
+                <div class="layout-page">
+                    <!-- Include Navbar -->
+                    @include('layouts.navbar')
+                    
+                    <div class="content-wrapper">
+                        <!-- Yield Content -->
+                        <div class="container-xxl flex-grow-1 container-p-y">
+                            @yield('content')
+                        </div>
 
-                <div class="content-wrapper">
-                    <!-- Yield Content -->
-                    <div class="container-xxl flex-grow-1 container-p-y">
-                        @yield('content')
+                        <!-- Footer -->
+                        {{-- @include('layouts.footer') --}}
+
+                        <div class="content-backdrop fade"></div>
                     </div>
-
-                    <!-- Footer -->
-                    {{-- @include('layouts.footer') --}}
-
-                    <div class="content-backdrop fade"></div>
                 </div>
             </div>
-        </div>
 
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
