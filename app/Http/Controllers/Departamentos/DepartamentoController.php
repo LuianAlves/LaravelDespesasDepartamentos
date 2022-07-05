@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Departamentos\Departamento;
+use App\Models\Despesas\Despesa;
 
 use CArbon\Carbon;
 use Validator;
@@ -109,7 +110,12 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        Departamento::findOrFail($id)->delete();
+        $depart = Departamento::findOrFail($id);
+
+        Despesa::where('departamento_id', $depart->id)->delete();
+
+        $depart->delete();
+
 
         $noti = [
             'message' => 'Departamento excluído com sucesso!',

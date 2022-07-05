@@ -17,29 +17,31 @@ class DashboardController extends Controller
 {
     public function index() {
         $departamentos = Departamento::get();     
-        
-        $soma_despesas = Despesa::where('tipo_gasto', 1)->orWhere('tipo_gasto', 3)->sum('valor_despesa');
-        $soma_metas = Despesa::where('tipo_gasto', 2)->orWhere('tipo_gasto', 3)->sum('valor_despesa');
+        $despesas = Despesa::get();
+        $soma_despesas = Despesa::where('tipo_gasto', 'Despesa')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
+        $soma_metas = Despesa::where('tipo_gasto', 'Meta')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
 
-        $data = DB::table('despesas')
+        // Despesas
+        $data = DB::table('despesa_infos')
         ->select(
-            DB::raw('tipo_gasto as tipo_gasto'),
+            DB::raw('departamento as departamento_id'),
             DB::raw('count(*) as number')
         )
-        ->groupBy('tipo_gasto')
+        ->groupBy('departamento')
         ->get();
 
-        $array[] = ['Gasto', 'Number'];
+        $array[] = ['Departamentos', 'Number'];
 
         foreach($data as $key => $value) {
-            $array[++$key] = [$value->tipo_gasto, $value->number];
+            $array[++$key] = [$value->departamento_id, $value->number];
         }
         
         return view('app.dashboard', compact(
             'departamentos',
+            'despesas',
             'soma_despesas',
             'soma_metas'
-        ))->with('tipo_gasto', json_encode($array));
+        ))->with('departamento_id', json_encode($array));
     }
 
     public function exportDespesas() {

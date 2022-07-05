@@ -10,6 +10,8 @@ use App\Http\Controllers\Departamentos\DepartamentoController;
 use App\Http\Controllers\Despesas\DespesaController;
 use App\Http\Controllers\Despesas\CategoriaDespesaController;
 use App\Http\Controllers\Despesas\SubCategoriaDespesaController;
+use App\Http\Controllers\Despesas\CheckDespesaController;
+
 
 use App\Http\Controllers\Pagamentos\MetodoPagamentoController;
 
@@ -63,3 +65,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' 
 
 // Exportar arquivo Excel
 Route::get('/export/despesas', [DashboardController::class, 'exportDespesas'])->name('export.despesas');
+
+// 
+Route::get('/check/despesas/{id}', [CheckDespesaController::class, 'check'])->name('check.despesa');
+Route::get('/remove/despesas/{id}', [CheckDespesaController::class, 'remove'])->name('remove.despesa');

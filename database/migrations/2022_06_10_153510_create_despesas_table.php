@@ -39,6 +39,8 @@ return new class extends Migration
             $table->string('mes_despesa')->nullable();
             $table->string('ano_despesa')->nullable();
 
+            $table->string('check_data_despesa')->nullable();
+
             $table->timestamps();
         });
     }

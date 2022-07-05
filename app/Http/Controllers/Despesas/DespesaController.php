@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Despesas\Despesa;
 use App\Models\Despesas\CategoriaDespesa;
 use App\Models\Despesas\SubCategoriaDespesa;
+use App\Models\Despesas\DespesaInfo;
 use App\Models\Pagamentos\MetodoPagamento;
 use App\Models\Departamentos\Departamento;
 
@@ -63,10 +64,9 @@ class DespesaController extends Controller
             case 3:
                 $gasto = 'Despesa/Meta';
                 break;
-            
         }
 
-        Despesa::insert([
+        $despesa = Despesa::create([
             'departamento_id' => $request->departamento_id,
             'categoria_despesa_id' => $request->categoria_despesa_id,
             'sub_categoria_despesa_id' => $request->sub_categoria_despesa_id,
@@ -79,11 +79,24 @@ class DespesaController extends Controller
             'descricao_despesa' => $request->descricao_despesa,
             'data_despesa' => $request->data_despesa,
             'dia_despesa' => Carbon::parse($request->data_despesa)->format('d'),
-            'mes_despesa'=> Carbon::parse($request->data_despesa)->format('m'),
+            'mes_despesa' => Carbon::parse($request->data_despesa)->format('m'),
             'ano_despesa' => Carbon::parse($request->data_despesa)->format('Y'),
-            
+
             'created_at' => Carbon::now()
         ]);
+
+        $depart = Departamento::findOrFail($request->departamento_id);
+
+        DespesaInfo::create([
+            'despesa_id' => $despesa->id,
+            'departamento_id' => $request->departamento_id,
+            'departamento' => $depart->departamento,
+            'tipo_gasto' => $gasto,
+            'valor_despesa' => $valor_despesa,
+            'check_data_despesa' => Carbon::now()->format('Y'),
+            'created_at' => Carbon::now()
+        ]);
+
 
         $noti = [
             'message' => 'Despesa inserida com sucesso!',
@@ -110,7 +123,11 @@ class DespesaController extends Controller
 
     public function destroy($id)
     {
-        Despesa::findOrFail($id)->delete();
+        $despesa = Despesa::findOrFail($id);
+
+        DespesaInfo::where('despesa_id', $despesa->id)->delete();
+
+        $despesa->delete();
 
         $noti = [
             'message' => 'Despesa removida com sucesso!',
