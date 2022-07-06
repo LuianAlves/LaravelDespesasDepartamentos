@@ -24,7 +24,7 @@
                                     <span id="departamento_input" class="input-group-text"><i
                                             class="bx bx-buildings"></i></span>
                                     <input type="text" name="departamento" id="departamento" class="form-control"
-                                        placeholder="Marketing">
+                                        placeholder="Marketing" autofocus>
                                 </div>
                                 @error('departamento')
                                     <small class="text-danger fw-bold">{{ $message }}</small>

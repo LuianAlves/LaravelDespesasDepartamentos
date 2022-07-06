@@ -24,7 +24,7 @@
                                     <span id="metodo_pagamento_input" class="input-group-text"><i
                                             class="bx bx-money"></i></span>
                                     <input type="text" name="metodo_pagamento" id="metodo_pagamento" class="form-control"
-                                        placeholder="Cartão Bradesco ..">
+                                        placeholder="Cartão Bradesco .." autofocus />
                                 </div>
                                 @error('metodo_pagamento')
                                     <small class="text-danger fw-bold">{{ $message }}</small>

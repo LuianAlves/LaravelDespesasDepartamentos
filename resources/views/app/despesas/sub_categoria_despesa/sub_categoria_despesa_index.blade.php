@@ -35,7 +35,7 @@
                                 <div class="input-group input-group-merge">
                                     <span id="sub_categoria_despesa_input" class="input-group-text"><i class="bx bx-category"></i></span>
                                     <input type="text" name="sub_categoria_despesa" id="sub_categoria_despesa" class="form-control"
-                                        placeholder="Despesa com combustíveis ..">
+                                        placeholder="Despesa com combustíveis .." autofocus>
                                 </div>
                                 @error('sub_categoria_despesa')
                                     <small class="text-danger fw-bold">{{ $message }}</small>

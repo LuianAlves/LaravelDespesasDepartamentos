@@ -23,7 +23,7 @@
                                 <div class="input-group input-group-merge">
                                     <span id="categoria_input" class="input-group-text"><i class="bx bx-categoria"></i></span>
                                     <input type="text" name="categoria_despesa" id="categoria_despesa" class="form-control"
-                                        placeholder="Veículos">
+                                        placeholder="Veículos" autofocus>
                                 </div>
                                 @error('categoria_despesa')
                                     <small class="text-danger fw-bold">{{ $message }}</small>

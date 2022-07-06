@@ -68,6 +68,7 @@
                                 <label for="departamento_id" class="form-label">Departamento <span
                                         class="text-danger fw-bold"> *</span></label>
                                 <select name="departamento_id" id="departamento_id" class="form-select">
+                                    <option selected disabled>Selecione um Departamento</option>
                                     @foreach ($departamentos as $departamento)
                                         <option id="departamento_{{ $departamento->id }}"
                                             value="{{ $departamento->id }}">
@@ -146,7 +147,7 @@
                                 <div class="input-group input-group-merge">
                                     <span id="despesa_input" class="input-group-text"><i class="bx bx-cart-alt"></i></span>
                                     <input type="text" name="despesa" id="despesa" class="form-control"
-                                        placeholder="Notebook para o colaborador ..">
+                                        placeholder="Notebook para o colaborador .." autofocus>
                                 </div>
                                 @error('despesa')
                                     <small class="text-danger fw-bold">{{ $message }}</small>
