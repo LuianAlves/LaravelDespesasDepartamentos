@@ -82,13 +82,18 @@ class DespesaController extends Controller
             'mes_despesa' => Carbon::parse($request->data_despesa)->format('m'),
             'ano_despesa' => Carbon::parse($request->data_despesa)->format('Y'),
 
+            'check_data_despesa' =>  Carbon::now()->format('Y'),
+
             'created_at' => Carbon::now()
         ]);
 
         $depart = Departamento::findOrFail($request->departamento_id);
+        $cat = CategoriaDespesa::findOrFail($request->categoria_despesa_id);
 
         DespesaInfo::create([
             'despesa_id' => $despesa->id,
+            'categoria_despesa_id' => $request->categoria_despesa_id,
+            'categoria_despesa' => $cat->categoria_despesa,
             'departamento_id' => $request->departamento_id,
             'departamento' => $depart->departamento,
             'tipo_gasto' => $gasto,

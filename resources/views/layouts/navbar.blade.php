@@ -38,7 +38,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                             <i class="bx bx-bell"></i>
                         </div>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                    <ul class="dropdown-menu dropdown-menu-end" style="max-height: 300px; overflow-y: auto;">
                         @foreach ($despesas as $info)
 
                             @php

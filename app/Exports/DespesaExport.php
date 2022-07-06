@@ -32,14 +32,14 @@ class DespesaExport implements FromCollection, ShouldAutoSize, WithMapping, With
             $despesa->CategoriaDespesa->categoria_despesa,
             $despesa->SubCategoriaDespesa->sub_categoria_despesa,
             $despesa->MetodoPagamento->metodo_pagamento,
-            $despesa->forma_pagamento,
+            $despesa->tipo_gasto,
             $despesa->despesa,
             $despesa->descricao_despesa,
             $despesa->valor_despesa,
             $despesa->data_despesa,
             $despesa->dia_despesa,
             $despesa->mes_despesa,
-            $despesa->ano_despesa,
+            $despesa->check_data_despesa,
             Carbon::parse($despesa->created_at)->toFormattedDateString()
         ];
     }
@@ -51,7 +51,7 @@ class DespesaExport implements FromCollection, ShouldAutoSize, WithMapping, With
            'CATEGORIA DESPESA',
            'SUB CATEGORIA DESPESA',
            'MÉTODO DE PAGAMENTO',
-           'FORMA DE PAGAMENTO',
+           'TIPO DE GASTO',
            'DESPESA',
            'DESCRIÇÃO',
            'VALOR',

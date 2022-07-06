@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Despesas\Despesa;
+use App\Models\Despesas\DespesaInfo;
 use App\Models\Departamentos\Departamento;
 use App\Models\Despesas\CategoriaDespesa;
 
@@ -16,24 +17,26 @@ use DB;
 class DashboardController extends Controller
 {
     public function index() {
+        $data = date('Y');
+
         $departamentos = Departamento::get();     
         $despesas = Despesa::get();
-        $soma_despesas = Despesa::where('tipo_gasto', 'Despesa')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
-        $soma_metas = Despesa::where('tipo_gasto', 'Meta')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
+        $soma_despesas = Despesa::where('tipo_gasto', 'Despesa')->orWhere('tipo_gasto', 'Despesa/Meta')->where('check_data_despesa', $data)->sum('valor_despesa');
+        $soma_metas = DespesaInfo::where('tipo_gasto', 'Meta')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
 
         // Despesas
         $data = DB::table('despesa_infos')
         ->select(
-            DB::raw('departamento as departamento_id'),
-            DB::raw('count(*) as number')
+            DB::raw('categoria_despesa as categoria_despesa_id'),
+            DB::raw('count(*) as number'),
         )
-        ->groupBy('departamento')
+        ->groupBy('categoria_despesa')
         ->get();
 
-        $array[] = ['Departamentos', 'Number'];
+        $array[] = ['Despesas', 'Number'];
 
         foreach($data as $key => $value) {
-            $array[++$key] = [$value->departamento_id, $value->number];
+            $array[++$key] = [$value->categoria_despesa_id, $value->number];
         }
         
         return view('app.dashboard', compact(
@@ -41,7 +44,7 @@ class DashboardController extends Controller
             'despesas',
             'soma_despesas',
             'soma_metas'
-        ))->with('departamento_id', json_encode($array));
+        ))->with('categoria_despesa_id', json_encode($array));
     }
 
     public function exportDespesas() {

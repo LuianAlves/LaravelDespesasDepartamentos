@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="fw-bold" style="width: 100%;" id="departamento_id">
+                    <div class="fw-bold" style="width: 100%;" id="categoria_despesa_id">
                     </div>
                 </div>
             </div>
@@ -143,7 +143,9 @@
 
 <!-- Gráfico de Departamentos -->
 <script type="text/javascript">
-    var analytics = <?php echo $departamento_id; ?>
+    var analytics = <?php echo $categoria_despesa_id; ?>
+
+    console.log(analytics)
 
     google.charts.load('current', {
         'packages': ['corechart']
@@ -154,9 +156,9 @@
     function drawChart() {
         var data = google.visualization.arrayToDataTable(analytics);
         var options = {};
-        var chart = new google.visualization.PieChart(document.getElementById('departamento_id'));
+        var chart = new google.visualization.PieChart(document.getElementById('categoria_despesa_id'));
         chart.draw(data, {
-            is3D: true
+            is3D: false
         });
     };
 </script>

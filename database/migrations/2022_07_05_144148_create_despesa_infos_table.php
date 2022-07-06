@@ -19,10 +19,12 @@ return new class extends Migration
             $table->unsignedBigInteger('despesa_id')->unsigned();
             $table->foreign('despesa_id')->references('id')->on('despesas')->onDelete('cascade');
 
+            $table->string('categoria_despesa_id');
+            $table->string('categoria_despesa');
             $table->string('departamento_id');
             $table->string('departamento');
             $table->string('tipo_gasto');
-            $table->string('valor_despesa');
+            $table->decimal('valor_despesa', 10, 2);
 
             $table->string('check_data_despesa')->nullable();
 
