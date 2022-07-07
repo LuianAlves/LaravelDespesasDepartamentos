@@ -78,5 +78,11 @@
             </li>
         @endif
 
+        <li class="menu-item">
+            <a href="{{route('chart.despesa')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-building"></i>
+                <div data-i18n="Support">Charts</div>
+            </a>
+        </li>
     </ul>
 </aside>

@@ -24,27 +24,28 @@ class DashboardController extends Controller
         $soma_despesas = Despesa::where('tipo_gasto', 'Despesa')->orWhere('tipo_gasto', 'Despesa/Meta')->where('check_data_despesa', $data)->sum('valor_despesa');
         $soma_metas = DespesaInfo::where('tipo_gasto', 'Meta')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
 
-        // Despesas
-        $data = DB::table('despesa_infos')
-        ->select(
-            DB::raw('categoria_despesa as categoria_despesa_id'),
-            DB::raw('count(*) as number'),
-        )
-        ->groupBy('categoria_despesa')
-        ->get();
+        $despesas = DB::table('despesa_infos')
+            ->select(DB::raw('departamento as departamento'), DB::raw('categoria_despesa as categoria_despesa'), DB::raw('sum(valor_despesa) as valor_despesa'))
+            ->groupBy(DB::raw('departamento'))
+            ->groupBy(DB::raw('categoria_despesa'))
+            ->get();
 
-        $array[] = ['Despesas', 'Number'];
+        $array = [];
 
-        foreach($data as $key => $value) {
-            $array[++$key] = [$value->categoria_despesa_id, $value->number];
+        foreach($despesas as $despesa) {
+            $array['nome_departamento'][] = $despesa->departamento;
+            $array['categoria_despesa'][] = $despesa->categoria_despesa;
+            $array['valor_despesa'][]  = $despesa->valor_despesa;
         }
+
+        $array['data'] = json_encode($array);
         
         return view('app.dashboard', compact(
             'departamentos',
             'despesas',
             'soma_despesas',
-            'soma_metas'
-        ))->with('categoria_despesa_id', json_encode($array));
+            'soma_metas',
+        ))->with($array);
     }
 
     public function exportDespesas() {
@@ -52,5 +53,25 @@ class DashboardController extends Controller
 
         // echo($data_atual);
         return Excel::download(new DespesaExport, 'planilha_orçamento_'.$data_atual.'.xlsx');
+    }
+
+    public function chart() {
+        // $despesas = DespesaInfo::select('departamento', 'valor_despesa')->groupBy('departamento', 'valor_despesa')->get();
+        $despesas = DB::table('despesa_infos')
+            ->select(DB::raw('departamento as departamento'), DB::raw('sum(valor_despesa) as valor_despesa'))
+            ->groupBy(DB::raw('departamento') )
+            ->get();
+
+        $array = [];
+
+        foreach($despesas as $despesa) {
+            $array['nome_departamento'][] = $despesa->departamento;
+            $array['valor_despesa'][]  = $despesa->valor_despesa;
+        }
+
+        $array['data'] = json_encode($array);
+
+        return view('app.chart.index', $array);
+        // return view('app.chart.index');
     }
 }

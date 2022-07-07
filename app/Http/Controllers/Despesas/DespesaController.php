@@ -22,7 +22,7 @@ class DespesaController extends Controller
         $categorias = CategoriaDespesa::orderBy('categoria_despesa', 'ASC')->get();
         $sub_categorias = SubCategoriaDespesa::orderBy('sub_categoria_despesa', 'ASC')->get();
         $metodos_pagamento = MetodoPagamento::orderBy('metodo_pagamento')->get();
-        $despesas = Despesa::orderBy('data_despesa', 'DESC')->get();
+        $despesas = Despesa::orderBy('categoria_despesa_id', 'ASC')->get();
 
         $soma_despesas = Despesa::where('tipo_gasto', 'Despesa')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
         $soma_metas = Despesa::where('tipo_gasto', 'Meta')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
