@@ -24,22 +24,32 @@ class DashboardController extends Controller
         $soma_despesas = Despesa::where('tipo_gasto', 'Despesa')->orWhere('tipo_gasto', 'Despesa/Meta')->where('check_data_despesa', $data)->sum('valor_despesa');
         $soma_metas = DespesaInfo::where('tipo_gasto', 'Meta')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
 
-        $despesas = DB::table('despesa_infos')
-            ->select(DB::raw('departamento as departamento'), DB::raw('categoria_despesa as categoria_despesa'), DB::raw('sum(valor_despesa) as valor_despesa'))
+        $despesa_deps = DB::table('despesa_infos')
+            ->select(DB::raw('departamento as departamento'), DB::raw('sum(valor_despesa) as valor_despesa'))
             ->groupBy(DB::raw('departamento'))
+            ->get();
+
+        $despesa_cats = DB::table('despesa_infos')
+            ->select(DB::raw('categoria_despesa as categoria_despesa'), DB::raw('sum(valor_despesa) as valor_despesa'))
             ->groupBy(DB::raw('categoria_despesa'))
             ->get();
 
-        $array = [];
+        $array1 = [];
+        $array2 = [];
 
-        foreach($despesas as $despesa) {
-            $array['nome_departamento'][] = $despesa->departamento;
-            $array['categoria_despesa'][] = $despesa->categoria_despesa;
-            $array['valor_despesa'][]  = $despesa->valor_despesa;
+        foreach($despesa_deps as $despesa) {
+            $array1['nome_departamento'][] = $despesa->departamento;
+            $array1['valor_despesa'][]  = $despesa->valor_despesa;
         }
 
-        $array['data'] = json_encode($array);
+        foreach($despesa_cats as $despesa) {
+            $array2['categoria_despesa'][] = $despesa->categoria_despesa;
+            $array2['valor_despesa'][]  = $despesa->valor_despesa;
+        }
+
+        $array['data'] = json_encode(array($array1, $array2));
         
+
         return view('app.dashboard', compact(
             'departamentos',
             'despesas',

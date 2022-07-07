@@ -152,14 +152,15 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         let cData = JSON.parse(`<?php echo $data; ?>`);
+        console.log(cData[0].nome_departamento)
 
         // ------------------------------------- Departamento
         // setup
         const data = {
-            labels: cData.nome_departamento,
+            labels: cData[0].nome_departamento,
             datasets: [{
                 label: 'Gasto por Departamentos',
-                data: cData.valor_despesa,
+                data: cData[1].valor_despesa,
                 backgroundColor: [
                     'rgba(255, 0, 0, 0.5)',
                     'rgba(0, 0, 255, 0.5)',
@@ -218,10 +219,10 @@
         // ------------------------------------- Categoria Despesas
         // setup
         const data2 = {
-            labels: cData.categoria_despesa,
+            labels: cData[1].categoria_despesa,
             datasets: [{
                 label: 'Gasto por Departamentos',
-                data: cData.valor_despesa,
+                data: cData[1].valor_despesa,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(255, 159, 64, 0.2)',
