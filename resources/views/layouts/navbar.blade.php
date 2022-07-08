@@ -60,13 +60,42 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                                     <a href="{{route('remove.despesa', $despesa->id)}}">
                                         <i class="bx bx-message-square-x text-danger me-2"></i>
                                     </a>
-                                    <a href="{{route('check.despesa', $despesa->id)}}">
-                                        <i class="bx bx-message-square-check text-success me-2"></i>
-                                    </a>
+                                    <form id="form_{{$despesa->id}}" action="{{route('check.despesa', $despesa->id)}}" method="post">
+                                        @csrf
+        
+                                            <a href="#" onclick="document.getElementById('form_{{$despesa->id}}').submit()">
+                                                <i class="bx bx-message-square-check text-success me-2"></i>
+                                            </a>
+                                    </form>
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
+
+
+
+
+
+
+
+
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             @endforeach
                         @endforeach
                     </ul>

@@ -13,7 +13,7 @@ use Carbon\Carbon;
 class CheckDespesaController extends Controller
 {
     public function check($id) {
-        $dinfo = DespesaInfo::findOrFail($id)->first();
+        $dinfo = DespesaInfo::where('despesa_id', $id)->first();
 
         $despesa = Despesa::where('id', $dinfo->despesa_id)->first();
         $nova_despesa = $despesa->replicate();

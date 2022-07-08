@@ -67,6 +67,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' 
 Route::get('/export/despesas', [DashboardController::class, 'exportDespesas'])->name('export.despesas');
 
 // 
-Route::get('/check/despesas/{id}', [CheckDespesaController::class, 'check'])->name('check.despesa');
-Route::get('/remove/despesas/{id}', [CheckDespesaController::class, 'remove'])->name('remove.despesa');
+Route::post('/check/despesas/{id}', [CheckDespesaController::class, 'check'])->name('check.despesa');
+Route::post('/remove/despesas/{id}', [CheckDespesaController::class, 'remove'])->name('remove.despesa');
+
 Route::get('/chart', [DashboardController::class, 'chart'])->name('chart.despesa');
