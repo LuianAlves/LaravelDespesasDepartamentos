@@ -88,7 +88,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="{{ url('https://pure-crag-59824.herokuapp.com/assets/img/logo.png') }}" alt class="w-px-40 h-auto rounded-circle" />
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
@@ -96,7 +96,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ asset('assets/img/no-image.png') }}" alt
+                                        <img src="{{ url('https://pure-crag-59824.herokuapp.com/assets/img/no-image.png') }}" alt
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ route('auth.logout') }}">
+                        <a class="dropdown-item" href="{{ url('https://pure-crag-59824.herokuapp.com/logout') }}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
