@@ -1,7 +1,7 @@
 <!-- Modal Adicionar Campus -->
 <div class="modal fade" id="editarDepartamento" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <form class="modal-content" id="editarDepart" action="{{ route('departamento.update') }}" method="post">
+        <form class="modal-content" id="editarDepart" action="{{ url('https://bgorcamento.herokuapp.com/departamento/atualizar') }}" method="post">
             @csrf
 
             <input type="hidden" name="departamento_id" id="departamento_id">
