@@ -48,28 +48,28 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' 
     Route::get('/departamento', [DepartamentoController::class, 'index'])->name('departamento.index');
     Route::post('/departamento/store', [DepartamentoController::class, 'store'])->name('departamento.store');
     Route::get('/departamento/editar/{id}', [DepartamentoController::class, 'edit'])->name('departamento.edit');
-    Route::post('/departamento/update', [DepartamentoController::class, 'update'])->name('departamento.update');
+    Route::post('/departamento/atualizar', [DepartamentoController::class, 'update'])->name('departamento.update');
     Route::get('/departamento/remover/{id}', [DepartamentoController::class, 'destroy'])->name('departamento.destroy');
     // Route::resource('/departamento', DepartamentoController::class)->except('create', 'update');
 
     Route::get('/despesa', [DespesaController::class, 'index'])->name('despesa.index');
     Route::post('/despesa/store', [DespesaController::class, 'store'])->name('despesa.store');
     Route::get('/despesa/editar/{id}', [DespesaController::class, 'edit'])->name('despesa.edit');
-    Route::post('/despesa/update', [DespesaController::class, 'update'])->name('despesa.update');
+    Route::post('/despesa/atualizar', [DespesaController::class, 'update'])->name('despesa.update');
     Route::get('/despesa/remover/{id}', [DespesaController::class, 'destroy'])->name('despesa.destroy');
     // Route::resource('/despesa', DespesaController::class)->except('create');
 
     Route::get('/categoria-despesa', [CategoriaDespesaController::class, 'index'])->name('categoria-despesa.index');
     Route::post('/categoria-despesa/store', [CategoriaDespesaController::class, 'store'])->name('categoria-despesa.store');
     Route::get('/categoria-despesa/editar/{id}', [CategoriaDespesaController::class, 'edit'])->name('categoria-despesa.edit');
-    Route::post('/categoria-despesa/update', [CategoriaDespesaController::class, 'update'])->name('categoria-despesa.update'); 
+    Route::post('/categoria-despesa/atualizar', [CategoriaDespesaController::class, 'update'])->name('categoria-despesa.update'); 
     Route::get('/categoria-despesa/remover/{id}', [CategoriaDespesaController::class, 'destroy'])->name('categoria-despesa.destroy');
     // Route::resource('/categoria-despesa', CategoriaDespesaController::class)->except('create', 'update');
  
     Route::get('/sub-categoria-despesa', [SubCategoriaDespesaController::class, 'index'])->name('sub-categoria-despesa.index');
     Route::post('/sub-categoria-despesa/store', [SubCategoriaDespesaController::class, 'store'])->name('sub-categoria-despesa.store');
     Route::get('/sub-categoria-despesa/editar/{id}', [SubCategoriaDespesaController::class, 'edit'])->name('sub-categoria-despesa.edit');
-    Route::post('/sub-categoria-despesa/update', [SubCategoriaDespesaController::class, 'update'])->name('sub-categoria-despesa.update');
+    Route::post('/sub-categoria-despesa/atualizar', [SubCategoriaDespesaController::class, 'update'])->name('sub-categoria-despesa.update');
     Route::get('/sub-categoria-despesa/remover/{id}', [SubCategoriaDespesaController::class, 'destroy'])->name('sub-categoria-despesa.destroy');
     // Route::resource('/sub-categoria-despesa', SubCategoriaDespesaController::class)->except('create', 'update');
 

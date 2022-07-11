@@ -11,7 +11,7 @@
     $('#sub_categoria_despesa_edit_error').html( "" );
     
     $.ajax({
-        url:"{{ url('https://bgorcamento.herokuapp.com/sub-categoria-despesa/update') }}",
+        url:"{{ url('https://bgorcamento.herokuapp.com/sub-categoria-despesa/atualizar') }}",
         type:'POST',
         data:formData,
         success:function(data) {

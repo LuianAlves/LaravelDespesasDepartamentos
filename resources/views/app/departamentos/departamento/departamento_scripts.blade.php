@@ -10,7 +10,7 @@
     $('#departamento_edit_error').html( "" );
     
     $.ajax({
-        url: "{{ route('departamento.update') }}",
+        url: "{{ url('https://bgorcamento.herokuapp.com/departamento/atualizar') }}",
         type: 'POST',
         data: formData,
         success: function(data) {
@@ -20,7 +20,7 @@
                     }        
                 }
                 if(data.success) {
-                    window.location.href="{{route('departamento.index')}}";
+                    window.location.href="{{url('https://bgorcamento.herokuapp.com/departamento')}}";
                 }
             },
         });
@@ -34,7 +34,7 @@
             $('#editarDepartamento').modal('show');
             $.ajax({
                 type: 'GET',
-                url: 'departamento/' +departamento_id+ '/edit',
+                url: 'departamento/editar/'+departamento_id,
                 success: function(response) {
                     $('#departamento_id').val(response.departamento.id);
                     $('#departamento_edit').val(response.departamento.departamento);

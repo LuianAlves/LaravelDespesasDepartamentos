@@ -78,19 +78,10 @@
                                                     <small>Editar Departamento</small>
                                                 </button>
 
-                                                <form id="removeDepartamento_{{ $departamento->id }}"
-                                                    action="{{ route('departamento.destroy', $departamento->id) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <a type="button" id="removeDepartamento_{{ $departamento->id }}"
-                                                        class="dropdown-item"
-                                                        onclick="document.getElementById('removeDepartamento_{{ $departamento->id }}').submit()">
-                                                        <i class="bx bx-trash  me-1"></i>
-                                                        <small>Apagar Departamento</small>
-                                                    </a>
-                                                </form>
+                                                <a href="{{url('https://bgorcamento.herokuapp.com/departamento/remover/'.$sub->id)}}" class="dropdown-item">
+                                                    <i class="bx bx-trash  me-1"></i>
+                                                    <small>Apagar Departamento</small>
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
