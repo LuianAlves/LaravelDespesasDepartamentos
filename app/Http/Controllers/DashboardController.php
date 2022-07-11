@@ -76,24 +76,4 @@ class DashboardController extends Controller
         // echo($data_atual);
         return Excel::download(new DespesaExport, 'planilha_orçamento_'.$data_atual.'.xlsx');
     }
-
-    public function chart() {
-        // $despesas = DespesaInfo::select('departamento', 'valor_despesa')->groupBy('departamento', 'valor_despesa')->get();
-        $despesas = DB::table('despesa_infos')
-            ->select(DB::raw('departamento as departamento'), DB::raw('sum(valor_despesa) as valor_despesa'))
-            ->groupBy(DB::raw('departamento') )
-            ->get();
-
-        $array = [];
-
-        foreach($despesas as $despesa) {
-            $array['nome_departamento'][] = $despesa->departamento;
-            $array['valor_despesa'][]  = $despesa->valor_despesa;
-        }
-
-        $array['data'] = json_encode($array);
-
-        return view('app.chart.index', $array);
-        // return view('app.chart.index');
-    }
 }

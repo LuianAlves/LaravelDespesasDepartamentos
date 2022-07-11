@@ -71,31 +71,6 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
-
-
-
-
-
-
-
-
-                                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             @endforeach
                         @endforeach
                     </ul>
@@ -129,12 +104,12 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="dropdown-item" href="#">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">Meu Perfil</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a class="dropdown-item" href="{{ route('profile.show') }}">
                             <i class="bx bx-cog me-2"></i>

@@ -69,5 +69,3 @@ Route::get('/export/despesas', [DashboardController::class, 'exportDespesas'])->
 // 
 Route::post('/check/despesas/{id}', [CheckDespesaController::class, 'check'])->name('check.despesa');
 Route::post('/remove/despesas/{id}', [CheckDespesaController::class, 'remove'])->name('remove.despesa');
-
-Route::get('/chart', [DashboardController::class, 'chart'])->name('chart.despesa');
