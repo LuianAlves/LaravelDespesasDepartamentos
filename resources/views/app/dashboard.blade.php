@@ -6,7 +6,7 @@
 @include('layouts.breadcrumb')
 
 <div class="row">
-    <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2">
+    <div class="col-12 col-lg-8 col-md-7 order-0">
         <!-- Count Despesas Ano -->
         <div class="row">
             <div class="col-12">
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+    <div class="col-12 col-lg-4 col-md-5 order-1">
         <!-- Count Despesas próximo Ano -->
         <div class="row mb-3">
             <div class="col-12">
@@ -96,7 +96,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <canvas id="chartTpGasto" height="763px"></canvas>
+                        <canvas id="chartTpGasto" height="auto"></canvas>
                     </div>
                 </div>
             </div>
