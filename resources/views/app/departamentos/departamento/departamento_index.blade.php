@@ -6,7 +6,7 @@
 
     <!-- CARD:Adicionar Departamento -->
     <div class="row">
-        <div class="col-12">
+        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-12">
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Departamento</h5>
@@ -34,7 +34,7 @@
 
                         <div class="row">
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-secondary">Cadastrar</button>
+                                <button type="submit" class="btn btn-sm btn-secondary">Cadastrar</button>
                             </div>
                         </div>
                     </form>
@@ -98,3 +98,13 @@
     @include('app.departamentos.departamento.departamento_edit')
 @endsection
 
+
+<style>
+    @media(max-width: 800px)
+    {
+        .btn .btn-secondary {
+            font-size: 14px;
+            padding: 5px 15px;
+        }
+    }
+</style>
