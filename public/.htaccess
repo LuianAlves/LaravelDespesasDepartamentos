@@ -3,6 +3,13 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+    </IfModule>
+    <FilesMatch ".(eot|ttf|otf|woff)">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+
     RewriteEngine On
 
     # ##Force SSL 
@@ -14,7 +21,7 @@
 
     # #If neither above conditions are met, redirect to https
     # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
+    
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

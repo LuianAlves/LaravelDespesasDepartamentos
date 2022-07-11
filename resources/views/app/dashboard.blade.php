@@ -968,7 +968,6 @@
             config2
         );
 
-        console.log(cData[2])
         // -------------------------------------  Tipo de Gasto ------------------------------------- 
         const data3 = {
             labels: cData[2].tipo_gasto,
