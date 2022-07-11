@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://pure-crag-59824.herokuapp.com/assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
-    <link rel="stylesheet" href="https://pure-crag-59824.herokuapp.com/vendor/css/pages/page-auth.css" />
+    <link rel="stylesheet" href="https://pure-crag-59824.herokuapp.com/assets/vendor/css/pages/page-auth.css" />
     
     {{-- Toast Notification --}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
