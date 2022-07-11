@@ -1,7 +1,7 @@
 <!-- Modal Adicionar Campus -->
 <div class="modal fade" id="editarSubCategoriaDespesa" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog modal-lg">
-        <form class="modal-content" id="editarSubCat" action="{{ route('sub-categoria-despesa.update') }}" method="post">
+        <form class="modal-content" id="editarSubCat" action="{{ url('https://bgorcamento.herokuapp.com/sub-categoria-despesa/atualizar') }}" method="post">
             @csrf
 
             <input type="hidden" name="sub_categoria_despesa_id" id="sub_categoria_despesa_id">

@@ -76,7 +76,7 @@
                                                 <small>Editar Categoria</small>
                                             </button>
 
-                                            <a href="{{url('https://bgorcamento.herokuapp.com/'.$categoria->id)}}" class="dropdown-item">
+                                            <a href="{{url('https://bgorcamento.herokuapp.com/categoria-despesa/remover/'.$categoria->id)}}" class="dropdown-item">
                                                 <i class="bx bx-trash me-1"></i>
                                                 <small>Apagar categoria</small>
                                             </a>

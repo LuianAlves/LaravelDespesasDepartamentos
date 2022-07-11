@@ -24,7 +24,7 @@
                     }        
                 }
                 if(data.success) {
-                    window.location.href="{{route('sub-categoria-despesa.index')}}";
+                    window.location.href="{{url('https://bgorcamento.herokuapp.com/sub-categoria-despesa')}}";
                 }
             },
         });

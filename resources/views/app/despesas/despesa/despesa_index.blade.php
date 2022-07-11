@@ -239,18 +239,12 @@
                                                 <i class="bx bx-dots-vertical-rounded"></i>
                                             </button>
                                             <div class="dropdown-menu">
-                                                
-
-                                                <form id="removeDespesa_{{$despesa->id}}" action="{{route('despesa.destroy', $despesa->id)}}" method="post">
-                                                    @csrf    
-                                                    @method('DELETE')
-                                                    
-                                                    <a type="button" id="removeDespesa_{{$despesa->id}}" class="dropdown-item"
-                                                        onclick="document.getElementById('removeDespesa_{{$despesa->id}}').submit()">
-                                                        <i class="bx bx-trash text-danger me-1"></i>
-                                                        Apagar Despesa
-                                                    </a>
-                                                </form>
+                                               
+                                                <a href="{{url('https://bgorcamento.herokuapp.com/despesa/remover/'.$despesa->id)}}" class="dropdown-item">
+                                                    <i class="bx bx-trash text-danger me-1"></i>
+                                                    Apagar Despesa
+                                                </a>
+                                            
                                             </div>
                                         </div>
                                     </td>

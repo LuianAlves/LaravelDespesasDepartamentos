@@ -10,7 +10,7 @@
         $('#metodo_pagamento_edit_error').html("");
         
         $.ajax({
-            url: "{{ route('metodo-pagamento.update') }}",
+            url: "{{ url('https://bgorcamento.herokuapp.com/metodo-pagamento/atualizar') }}",
             type: 'POST',
             data: formData,
             success: function(data) {
@@ -20,7 +20,7 @@
                     }
                 }
                 if (data.success) {
-                    window.location.href = "{{ route('metodo-pagamento.index') }}";
+                    window.location.href = "{{ url('https://bgorcamento.herokuapp.com/metodo-pagamento') }}";
                 }
             },
         });
@@ -35,7 +35,7 @@
             $('#editarMetodoPagamento').modal('show');
             $.ajax({
                 type: 'GET',
-                url: 'metodo-pagamento/' + metodo_pagamento_id + '/edit',
+                url: 'metodo-pagamento/editar/'+ metodo_pagamento_id,
                 success: function(response) {
                     $('#metodo_pagamento_id').val(response.metodo.id);
                     $('#metodo_pagamento_edit').val(response.metodo.metodo_pagamento);
