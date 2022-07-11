@@ -111,11 +111,6 @@ class DespesaController extends Controller
         return redirect()->back()->with($noti);
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         //

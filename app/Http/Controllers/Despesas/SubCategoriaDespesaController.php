@@ -22,7 +22,7 @@ class SubCategoriaDespesaController extends Controller
     public function index()
     {
         $categorias = CategoriaDespesa::orderBy('categoria_despesa', 'ASC')->get();
-        $sub_categorias = SubCategoriaDespesa::orderBy('sub_categoria_despesa', 'ASC')->get();
+        $sub_categorias = SubCategoriaDespesa::get();
 
         return view('app.despesas.sub_categoria_despesa.sub_categoria_despesa_index', compact('categorias', 'sub_categorias'));
     }
