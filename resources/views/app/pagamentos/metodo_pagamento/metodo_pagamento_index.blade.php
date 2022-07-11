@@ -6,7 +6,7 @@
     
     <!-- CARD:Adicionar Métodos de Pagamento -->
     <div class="row">
-        <div class="col-12">
+        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-12">
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Métodos de Pagamento</h5>
