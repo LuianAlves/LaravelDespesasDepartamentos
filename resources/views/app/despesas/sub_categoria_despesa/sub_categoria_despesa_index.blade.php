@@ -92,16 +92,10 @@
                                                 <small>Editar Sub Categoria</small>
                                             </button>
 
-                                            <form id="removeSubCategoria_{{$sub->id}}" action="{{url('https://bgorcamento.herokuapp.com/sub-categoria-despesa/destroy/'.$sub->id)}}" method="post">
-                                                @csrf    
-                                                @method('DELETE')
-                                                
-                                                <a type="button" id="removeSubCategoria_{{$sub->id}}" class="dropdown-item"
-                                                    onclick="document.getElementById('removeSubCategoria_{{$sub->id}}').submit()">
-                                                    <i class="bx bx-trash me-1"></i>
-                                                    <small>Apagar Sub Categoria</small>
-                                                </a>
-                                            </form>
+                                            <a href="{{url('https://bgorcamento.herokuapp.com/sub-categoria-despesa/destroy/'.$sub->id)}}" class="dropdown-item"">
+                                                <i class="bx bx-trash me-1"></i>
+                                                <small>Apagar Sub Categoria</small>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
