@@ -57,9 +57,14 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                                         <span class="text-success">R$ </span>
                                         {{ str_replace('.', ',', $despesa->valor_despesa) }}
                                     </span>
-                                    <a href="{{route('remove.despesa', $despesa->id)}}">
-                                        <i class="bx bx-message-square-x text-danger me-2"></i>
-                                    </a>
+                                    <form id="form1_{{$despesa->id}}" action="{{route('remove.despesa', $despesa->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+        
+                                            <a href="#" onclick="document.getElementById('form1_{{$despesa->id}}').submit()">
+                                                <i class="bx bx-message-square-x text-danger me-2"></i>
+                                            </a>
+                                    </form>
                                     <form id="form_{{$despesa->id}}" action="{{route('check.despesa', $despesa->id)}}" method="post">
                                         @csrf
         
