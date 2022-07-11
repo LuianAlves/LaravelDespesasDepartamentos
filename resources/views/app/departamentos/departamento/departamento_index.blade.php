@@ -78,7 +78,7 @@
                                                     <small>Editar Departamento</small>
                                                 </button>
 
-                                                <a href="{{url('https://bgorcamento.herokuapp.com/departamento/remover/'.$sub->id)}}" class="dropdown-item">
+                                                <a href="{{url('https://bgorcamento.herokuapp.com/departamento/remover/'.$departamento->id)}}" class="dropdown-item">
                                                     <i class="bx bx-trash  me-1"></i>
                                                     <small>Apagar Departamento</small>
                                                 </a>
