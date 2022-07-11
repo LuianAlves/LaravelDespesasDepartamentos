@@ -13,7 +13,7 @@
                     <small class="text-muted float-end">BONGAS BRASIL</small>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('categoria-despesa.store') }}">
+                    <form method="post" action="{{ url('https://bgorcamento.herokuapp.com/categoria-despesa/store') }}">
                         @csrf
 
                         <div class="row mb-4">

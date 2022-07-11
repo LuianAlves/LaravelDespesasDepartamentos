@@ -13,6 +13,11 @@ use Response;
 
 class MetodoPagamentoController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $metodos_pagamento = MetodoPagamento::orderBy('metodo_pagamento', 'ASC')->get();
@@ -20,6 +25,12 @@ class MetodoPagamentoController extends Controller
         return view('app.pagamentos.metodo_pagamento.metodo_pagamento_index',compact('metodos_pagamento'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -41,6 +52,23 @@ class MetodoPagamentoController extends Controller
         return redirect()->back()->with($noti);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
         $metodo = MetodoPagamento::findOrFail($id);
@@ -50,6 +78,13 @@ class MetodoPagamentoController extends Controller
         ]);
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -73,6 +108,12 @@ class MetodoPagamentoController extends Controller
         return Response::json(['errors' => $validator->errors()]);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         MetodoPagamento::findOrFail($id)->delete();
