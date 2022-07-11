@@ -3,9 +3,7 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-    RewriteEngine On 
-    RewriteCond %{HTTPS} off 
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteEngine On
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
