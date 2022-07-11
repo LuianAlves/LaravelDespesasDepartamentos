@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="index.html" class="app-brand-link">
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">BG Orçamento</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">Bongas</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -14,7 +14,7 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         <li class="menu-item active">
-            <a href="{{url('https://pure-crag-59824.herokuapp.com/dashboard')}}" class="menu-link">
+            <a href="{{route('dashboard')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -25,7 +25,7 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Cadastros</span></li>
 
         <li class="menu-item">
-            <a href="{{url('https://pure-crag-59824.herokuapp.com/departamento')}}" class="menu-link">
+            <a href="{{route('departamento.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-buildings"></i>
                 <div data-i18n="Support">Departamentos</div>
             </a>
@@ -39,13 +39,13 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{url('https://pure-crag-59824.herokuapp.com/categoria-despesa')}}" class="menu-link">
+                    <a href="{{route('categoria-despesa.index')}}" class="menu-link">
                         <div data-i18n="Support">Categoria</div>
                     </a>
                 </li>
                 @if(App\Models\Despesas\CategoriaDespesa::count() != 0)
                     <li class="menu-item">
-                        <a href="{{url('https://pure-crag-59824.herokuapp.com/sub-categoria-despesa')}}" class="menu-link">
+                        <a href="{{route('sub-categoria-despesa.index')}}" class="menu-link">
                             <div data-i18n="Support">Sub Categoria</div>
                         </a>
                     </li>
@@ -55,7 +55,7 @@
 
         
         <li class="menu-item">
-            <a href="{{url('https://pure-crag-59824.herokuapp.com/metodo-pagamento')}}" class="menu-link">
+            <a href="{{route('metodo-pagamento.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-money"></i>
                 <div data-i18n="Support">Métodos de Pagamento</div>
             </a>
@@ -71,11 +71,18 @@
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Despesas</span></li>
 
             <li class="menu-item">
-                <a href="{{url('https://pure-crag-59824.herokuapp.com/despesa')}}" class="menu-link">
+                <a href="{{route('despesa.index')}}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-building"></i>
                     <div data-i18n="Support">Orçamento</div>
                 </a>
             </li>
         @endif
+
+        <li class="menu-item">
+            <a href="{{route('chart.despesa')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-building"></i>
+                <div data-i18n="Support">Charts</div>
+            </a>
+        </li>
     </ul>
 </aside>

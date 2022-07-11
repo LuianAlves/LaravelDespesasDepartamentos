@@ -126,7 +126,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ url('https://pure-crag-59824.herokuapp.com/logout') }}">
+                        <a class="dropdown-item" href="{{ route('auth.logout') }}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
