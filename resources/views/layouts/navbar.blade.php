@@ -60,7 +60,6 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
 
                                     <form id="form1_{{$despesa->id}}" action="{{url('https://pure-crag-59824.herokuapp.com/remove/despesas/'.$despesa->id)}}" method="post">
                                         @csrf
-                                        @method('DELETE')
         
                                             <a href="#" onclick="document.getElementById('form1_{{$despesa->id}}').submit()">
                                                 <i class="bx bx-message-square-x text-danger me-2"></i>
