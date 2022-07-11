@@ -58,7 +58,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                                         {{ str_replace('.', ',', $despesa->valor_despesa) }}
                                     </span>
 
-                                    <form id="form1_{{$despesa->id}}" action="{{url('https://pure-crag-59824.herokuapp.com/remove/despesas/'.$despesa->id)}}" method="post">
+                                    <form id="form1_{{$despesa->id}}" action="{{url('https://bgorcamento.herokuapp.com/remove/despesas/'.$despesa->id)}}" method="post">
                                         @csrf
         
                                             <a href="#" onclick="document.getElementById('form1_{{$despesa->id}}').submit()">
@@ -66,7 +66,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                                             </a>
                                     </form>
 
-                                    <form id="form_{{$despesa->id}}" action="{{url('https://pure-crag-59824.herokuapp.com/check/despesas/'.$despesa->id)}}" method="post">
+                                    <form id="form_{{$despesa->id}}" action="{{url('https://bgorcamento.herokuapp.com/check/despesas/'.$despesa->id)}}" method="post">
                                         @csrf
         
                                             <a href="#" onclick="document.getElementById('form_{{$despesa->id}}').submit()">
@@ -88,7 +88,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <img src="{{ url('https://pure-crag-59824.herokuapp.com/assets/img/logo.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="{{ url('https://bgorcamento.herokuapp.com/assets/img/logo.png') }}" alt class="w-px-40 h-auto rounded-circle" />
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
@@ -96,7 +96,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ url('https://pure-crag-59824.herokuapp.com/assets/img/no-image.png') }}" alt
+                                        <img src="{{ url('https://bgorcamento.herokuapp.com/assets/img/no-image.png') }}" alt
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
