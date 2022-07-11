@@ -58,7 +58,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                                         {{ str_replace('.', ',', $despesa->valor_despesa) }}
                                     </span>
 
-                                    <form id="form1_{{$despesa->id}}" action="{{url('http://pure-crag-59824.herokuapp.com/remove/despesas/'.$despesa->id)}}" method="post">
+                                    <form id="form1_{{$despesa->id}}" action="{{url('https://pure-crag-59824.herokuapp.com/remove/despesas/'.$despesa->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
         
@@ -67,7 +67,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                                             </a>
                                     </form>
 
-                                    <form id="form_{{$despesa->id}}" action="{{url('http://pure-crag-59824.herokuapp.com/remove/despesas/.', $despesa->id)}}" method="post">
+                                    <form id="form_{{$despesa->id}}" action="{{url('https://pure-crag-59824.herokuapp.com/check/despesas/.', $despesa->id)}}" method="post">
                                         @csrf
         
                                             <a href="#" onclick="document.getElementById('form_{{$despesa->id}}').submit()">
