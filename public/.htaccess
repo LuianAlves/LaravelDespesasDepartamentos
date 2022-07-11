@@ -3,10 +3,18 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-    RewriteEngine On 
-    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-    RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,QSA,NC,L]
-    
+    RewriteEngine On
+
+    ##Force SSL 
+    #Normal way (in case you need to deploy to NON-heroku)
+    RewriteCond %{HTTPS} !=on
+
+    #Heroku way
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https 
+
+    #If neither above conditions are met, redirect to https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
