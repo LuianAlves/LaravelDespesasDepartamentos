@@ -5,7 +5,7 @@
     @include('layouts.breadcrumb')
 
     <div class="row justify-content-end">
-        <div class="col-6 my-3">
+        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-12 my-3">
             <div class="card">
                 <div class="card-body">
                     <!-- /Logo -->
@@ -44,7 +44,7 @@
     </div>
 
     <div class="row justify-content-end">
-        <div class="col-6 my-3">
+        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-12 my-3">
             <div class="card">
                 <div class="card-body">
                     <!-- /Logo -->
