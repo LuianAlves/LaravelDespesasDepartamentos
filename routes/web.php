@@ -57,8 +57,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' 
     Route::post('/sub-categoria-despesa/update', [SubCategoriaDespesaController::class, 'update'])->name('sub-categoria-despesa.update');
     Route::resource('/sub-categoria-despesa', SubCategoriaDespesaController::class)->except('create', 'update');
 
-    Route::post('/metodo-pagamento/update', [MetodoPagamentoController::class, 'update'])->name('metodo-pagamento.update');
-    Route::resource('/metodo-pagamento', MetodoPagamentoController::class)->except('create', 'update');
+
+    Route::get('/metodo-pagamento', [MetodoPagamentoController::class, 'index'])->name('metodo-pagamento.index');
+    Route::post('/metodo-pagamento/store', [MetodoPagamentoController::class, 'store'])->name('metodo-pagamento.store');
+    Route::get('/metodo-pagamento/editar/{id}', [MetodoPagamentoController::class, 'edit'])->name('metodo-pagamento.edit');
+    Route::post('/metodo-pagamento/atualizar', [MetodoPagamentoController::class, 'update'])->name('metodo-pagamento.update');
+    Route::get('/metodo-pagamento/remover/{id}', [MetodoPagamentoController::class, 'destroy'])->name('metodo-pagamento.destroy');
+
+    // Route::resource('/metodo-pagamento', MetodoPagamentoController::class)->except('create', 'update');
 
 });
 
