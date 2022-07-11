@@ -6,7 +6,7 @@
 
     <!-- Card Count Despesas -->
     <div class="row">
-        <div class="col-6 mb-4">
+        <div class="col-12 col-sm-6 mb-4">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 mb-4">
+        <div class="col-12 col-sm-6 mb-4">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
@@ -63,8 +63,8 @@
                         @csrf
 
                         <!-- Departamento/CategoriaDespesa -->
-                        <div class="row mb-4">
-                            <div class="col-4">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-lg-4 mb-3">
                                 <label for="departamento_id" class="form-label">Departamento <span
                                         class="text-danger fw-bold"> *</span></label>
                                 <select name="departamento_id" id="departamento_id" class="form-select">
@@ -79,7 +79,7 @@
                                     <small class="text-danger fw-bold">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-sm-6 col-lg-4 mb-3">
                                 <label for="categoria_despesa_id" class="form-label">Categoria <span
                                         class="text-danger fw-bold"> *</span></label>
                                 <select name="categoria_despesa_id" id="categoria_despesa_id" class="form-select">
@@ -93,7 +93,7 @@
                                     <small class="text-danger fw-bold">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-sm-6 col-lg-4 mb-3">
                                 <label for="sub_categoria_despesa_id" class="form-label">Sub Categoria <span
                                         class="text-danger fw-bold"> *</span></label>
                                 <select name="sub_categoria_despesa_id" id="sub_categoria_despesa_id"
@@ -108,7 +108,7 @@
 
                         <!-- Metodo Pagamento/Forma de Pagamento -->
                         <div class="row mb-4">
-                            <div class="col-6">
+                            <div class="col-12 col-sm-6 mb-3">
                                 <label for="metodo_pagamento_id" class="form-label">Método de Pagamento <span
                                         class="text-danger fw-bold"> *</span></label>
                                 <select name="metodo_pagamento_id" id="metodo_pagamento_id" class="form-select">
@@ -121,7 +121,7 @@
                                     <small class="text-danger fw-bold">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-sm-6 mb-3">
                                 <label for="forma_pagamento" class="form-label d-block">Gasto<span
                                         class="text-danger fw-bold"> *</span></label>
                                 <div class="form-check form-check-inline mt-3">
@@ -259,3 +259,11 @@
 @endsection
 
 @include('app.despesas.despesa.despesa_scripts')
+
+<style>
+    @media(max-width: 450px;) {
+        .form-check {
+            font-size: 13px;
+        }
+    }
+</style>

@@ -34,7 +34,7 @@
 
                         <div class="row">
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-sm btn-secondary">Cadastrar</button>
+                                <button type="submit" class="btn btn-secondary">Cadastrar</button>
                             </div>
                         </div>
                     </form>
@@ -97,14 +97,3 @@
     @include('app.departamentos.departamento.departamento_scripts')
     @include('app.departamentos.departamento.departamento_edit')
 @endsection
-
-
-<style>
-    @media(max-width: 800px)
-    {
-        .btn .btn-secondary {
-            font-size: 14px;
-            padding: 5px 15px;
-        }
-    }
-</style>
