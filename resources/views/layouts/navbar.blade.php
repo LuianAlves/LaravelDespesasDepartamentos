@@ -96,7 +96,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ url('https://bgorcamento.herokuapp.com/assets/img/no-image.png') }}" alt
+                                        <img src="{{ url('https://bgorcamento.herokuapp.com/assets/img/logo.png') }}" alt
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
