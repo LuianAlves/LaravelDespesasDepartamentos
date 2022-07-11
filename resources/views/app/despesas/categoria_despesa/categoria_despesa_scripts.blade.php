@@ -10,7 +10,7 @@
         $('#categoria_despesa_edit_error').html("");
 
         $.ajax({
-            url: "{{ url('https://bgorcamento.herokuapp.com/categoria-despesa/update') }}",
+            url: "{{ url('https://bgorcamento.herokuapp.com/categoria-despesa/atualizar') }}",
             type: 'POST',
             data: formData,
             success: function(data) {
@@ -20,7 +20,7 @@
                     }
                 }
                 if (data.success) {
-                    window.location.href = "{{ route('categoria-despesa.index') }}";
+                    window.location.href = "{{ url('https://bgorcamento.herokuapp.com/categoria-despesa') }}";
                 }
             },
         });

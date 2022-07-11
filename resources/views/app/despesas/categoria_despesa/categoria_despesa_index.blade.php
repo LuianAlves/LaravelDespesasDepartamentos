@@ -76,16 +76,11 @@
                                                 <small>Editar Categoria</small>
                                             </button>
 
-                                            <form id="removeCategoria_{{$categoria->id}}" action="{{route('categoria-despesa.destroy', $categoria->id)}}" method="post">
-                                                @csrf    
-                                                @method('DELETE')
-                                                
-                                                <a type="button" id="removeCategoria_{{$categoria->id}}" class="dropdown-item"
-                                                    onclick="document.getElementById('removeCategoria_{{$categoria->id}}').submit()">
-                                                    <i class="bx bx-trash me-1"></i>
-                                                    <small>Apagar categoria</small>
-                                                </a>
-                                            </form>
+                                            <a href="{{url('https://bgorcamento.herokuapp.com/'.$categoria->id)}}" class="dropdown-item">
+                                                <i class="bx bx-trash me-1"></i>
+                                                <small>Apagar categoria</small>
+                                            </a>
+                                            
                                         </div>
                                     </div>
                                 </td>
