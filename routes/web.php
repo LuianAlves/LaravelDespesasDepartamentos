@@ -45,8 +45,13 @@ Route::controller(AuthController::class)->group(function() {
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' ])->group(function () {
 
+    Route::get('/departamento', [DepartamentoController::class, 'index'])->name('departamento.index');
+    Route::post('/departamento/store', [DepartamentoController::class, 'store'])->name('departamento.store');
+    Route::post('/departamento/editar/{id}', [DepartamentoController::class, 'edit'])->name('departamento.edit');
     Route::post('/departamento/update', [DepartamentoController::class, 'update'])->name('departamento.update');
-    Route::resource('/departamento', DepartamentoController::class)->except('create', 'update');
+    Route::post('/departamento/remover/{id}', [DepartamentoController::class, 'destroy'])->name('departamento.destroy');
+
+    // Route::resource('/departamento', DepartamentoController::class)->except('create', 'update');
 
     Route::resource('/despesa', DespesaController::class)->except('create');
 
