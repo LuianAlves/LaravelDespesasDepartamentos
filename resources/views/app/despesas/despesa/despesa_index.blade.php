@@ -201,7 +201,7 @@
 
     <!-- CARD:Listagem de Despesas -->
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" style="max-height: 500px; overflow-y: auto;">
             <div class="card">
                 <h5 class="card-header">Listagem de Despesas</h5>
                 <div class="table-responsive text-nowrap">
