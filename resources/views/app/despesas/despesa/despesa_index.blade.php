@@ -107,7 +107,7 @@
                         </div>
 
                         <!-- Metodo Pagamento/Forma de Pagamento -->
-                        <div class="row mb-4">
+                        <div class="row">
                             <div class="col-12 col-sm-6 mb-3">
                                 <label for="metodo_pagamento_id" class="form-label">Método de Pagamento <span
                                         class="text-danger fw-bold"> *</span></label>
@@ -140,8 +140,8 @@
                         </div>
 
                         <!-- Despesa/Valor -->
-                        <div class="row mb-4">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 mb-3">
                                 <label class="form-label" for="despesa_input">Despesa <span class="text-danger fw-bold">
                                         *</span></label>
                                 <div class="input-group input-group-merge">
@@ -153,7 +153,7 @@
                                     <small class="text-danger fw-bold">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-sm-6 mb-3">
                                 <label class="form-label" for="valor_despesa_input">Valor <span
                                         class="text-danger fw-bold"> *</span></label>
                                 <div class="input-group input-group-merge">
@@ -168,8 +168,8 @@
                         </div>
 
                         <!-- Descrição Despesa/Data Despesa -->
-                        <div class="row mb-4">
-                            <div class="col-6">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 mb-3">
                                 <label class="form-label" for="descricao_despesa_input">Descrição</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-descricao_despesa_input" class="input-group-text"><i
@@ -179,7 +179,7 @@
                                 </div>
                                 <div class="form-text">Campo Opcional</div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-sm-6 mb-3">
                                 <label class="form-label" for="data_despesa">Data</label>
                                 <div class="input-group input-group-merge">
                                     <input type="date" name="data_despesa" id="data_despesa" class="form-control">
@@ -261,7 +261,7 @@
 @include('app.despesas.despesa.despesa_scripts')
 
 <style>
-    @media(max-width: 450px;) {
+    @media (max-width: 450px) {
         .form-check {
             font-size: 13px;
         }
