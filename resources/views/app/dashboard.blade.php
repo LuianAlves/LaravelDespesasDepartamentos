@@ -857,21 +857,6 @@
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Configurações CHART JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -882,7 +867,7 @@
             labels: cData[0].nome_departamento,
             datasets: [{
                 label: 'Gasto por Departamentos',
-                data: cData[1].valor_despesa,
+                data: cData[0].valor_despesa,
                 backgroundColor: [
                     'rgba(255, 0, 0, 0.5)',
                     'rgba(0, 0, 255, 0.5)',
@@ -934,7 +919,7 @@
         const data2 = {
             labels: cData[1].categoria_despesa,
             datasets: [{
-                label: 'Gasto por Departamentos',
+                label: 'Gasto por categorias',
                 data: cData[1].valor_despesa,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
