@@ -11,7 +11,7 @@
     $('#sub_categoria_despesa_edit_error').html( "" );
     
     $.ajax({
-        url:"{{ route('sub-categoria-despesa.update') }}",
+        url:"{{ url('https://bgorcamento.herokuapp.com/sub-categoria-despesa/update') }}",
         type:'POST',
         data:formData,
         success:function(data) {
@@ -39,7 +39,7 @@
             $('#editarSubCategoriaDespesa').modal('show');
             $.ajax({
                 type: 'GET',
-                url: 'sub-categoria-despesa/' +sub_categoria_despesa_id+ '/edit',
+                url: 'sub-categoria-despesa/editar/'+sub_categoria_despesa_id,
                 success: function(response) {
                     $('#sub_categoria_despesa_id').val(response.subcategoria.id);
                     $('#sub_categoria_despesa_edit').val(response.subcategoria.sub_categoria_despesa);

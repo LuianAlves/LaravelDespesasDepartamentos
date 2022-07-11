@@ -92,7 +92,7 @@
                                                 <small>Editar Sub Categoria</small>
                                             </button>
 
-                                            <form id="removeSubCategoria_{{$sub->id}}" action="{{route('sub-categoria-despesa.destroy', $sub->id)}}" method="post">
+                                            <form id="removeSubCategoria_{{$sub->id}}" action="{{url('https://bgorcamento.herokuapp.com/sub-categoria-despesa/destroy/'.$sub->id)}}" method="post">
                                                 @csrf    
                                                 @method('DELETE')
                                                 
