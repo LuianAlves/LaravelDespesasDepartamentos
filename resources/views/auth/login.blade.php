@@ -8,7 +8,7 @@
         <h4 class="mb-2 text-center">Sistema Orçamentário 🤑</h4>
         <p class="mb-4 text-center">Faça Login para iniciar seu Orçamento !!</p>
 
-        <form id="formAuthentication" class="mb-3" action="{{route('login')}}" method="POST">
+        <form id="formAuthentication" class="mb-3" action="{{url('https://pure-crag-59824.herokuapp.com/login')}}" method="POST">
             @csrf
 
             <div class="mb-3">

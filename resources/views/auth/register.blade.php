@@ -6,7 +6,7 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ url('https://pure-crag-59824.herokuapp.com/register') }}">
             @csrf
 
             <div>
