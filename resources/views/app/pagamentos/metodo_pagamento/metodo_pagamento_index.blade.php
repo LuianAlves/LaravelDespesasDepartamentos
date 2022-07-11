@@ -77,16 +77,11 @@
                                                 <small>Editar Método de Pagamento</small>
                                             </button>
 
-                                            <form id="removeMetodo_{{$metodo->id}}" action="{{route('metodo-pagamento.destroy', $metodo->id)}}" method="post">
-                                                @csrf    
-                                                @method('DELETE')
-                                                
-                                                <a type="button" id="removeMetodo_{{$metodo->id}}" class="dropdown-item"
-                                                    onclick="document.getElementById('removeMetodo_{{$metodo->id}}').submit()">
-                                                    <i class="bx bx-trash me-1"></i>
-                                                    <small>Apagar Método de Pagamento</small>
-                                                </a>
-                                            </form>
+                                            <a type="button" href="{{url('https://bgorcamento.herokuapp.com/metodo-pagamento/remover/'.$metodo->id)}}" class="dropdown-item">
+                                                <i class="bx bx-trash me-1"></i>
+                                                <small>Apagar Método de Pagamento</small>
+                                            </a>
+                                            
                                         </div>
                                     </div>
                                 </td>

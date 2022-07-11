@@ -1,7 +1,7 @@
 <!-- Modal Adicionar Campus -->
 <div class="modal fade" id="editarMetodoPagamento" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <form class="modal-content" id="editarPgt" action="{{ route('metodo-pagamento.update') }}" method="post">
+        <form class="modal-content" id="editarPgt" action="{{ url('https://bgorcamento.herokuapp.com/metodo-pagamento/atualizar') }}" method="post">
             @csrf
 
             <input type="hidden" name="metodo_pagamento_id" id="metodo_pagamento_id">
