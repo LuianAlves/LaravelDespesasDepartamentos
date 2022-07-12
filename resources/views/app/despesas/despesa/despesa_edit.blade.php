@@ -140,11 +140,8 @@
                             <div class="col-6">
                                 <label class="form-label" for="descricao_despesa_input">Descrição</label>
                                 <div class="input-group input-group-merge">
-                                    <span id="basic-icon-default-descricao_despesa_input" class="input-group-text"><i
-                                            class="bx bx-comment"></i></span>
-                                    <textarea name="descricao_despesa" id="descricao_despesa" class="form-control" rows="4">
-                                    {{ $despesa->descricao_despesa }}
-                                </textarea>
+                                    <span id="basic-icon-default-descricao_despesa_input" class="input-group-text"><i class="bx bx-comment"></i></span>
+                                    <textarea name="descricao_despesa" id="descricao_despesa" class="form-control" rows="4">{{ $despesa->descricao_despesa }}</textarea>
                                 </div>
                                 <div class="form-text">Campo Opcional</div>
                             </div>
