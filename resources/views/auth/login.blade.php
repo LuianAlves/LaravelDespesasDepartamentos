@@ -14,8 +14,10 @@
 
             <div class="mb-3">
                 <label for="login" class="form-label">E-mail ou Usuário</label>
-                <input type="text" class="form-control" id="login" name="login" :value="old('login')"
-                    placeholder="Entre com seu email ou usuário" autofocus />
+                <input type="text" class="form-control" id="login" name="login" :value="old('login')" placeholder="Entre com seu email ou usuário" autofocus />
+                @error('login')
+                    <small class="text-danger fw-bold">{{$message}}</small>   
+                @enderror
             </div>
 
             <div class="mb-3 form-password-toggle">
@@ -31,6 +33,9 @@
                         aria-describedby="password" autocomplete="current-password" />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
+                @error('password')
+                    <small class="text-danger fw-bold">{{$message}}</small>   
+                @enderror
             </div>
 
             <div class="mb-3">

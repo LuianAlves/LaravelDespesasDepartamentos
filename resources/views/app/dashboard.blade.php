@@ -51,9 +51,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                        <div class="card-title mb-0">
-                            <h5 class="m-0 me-2">Despesas por Categorias</h5>
-                            <small class="text-muted">Total: {{ count($despesas) }}</small>
+                        <div class="flex-shrink-0">
+                            <h6 class="text-uppercase">Despesa por categorias</h6>
+                        </div>
+                        <div class="p-0">
+                            <span class="badge bg-label-warning d-flex justify-content-end">
+                                Ano {{ date('Y') }}
+                            </span>
                         </div>
                     </div>
                     <div class="card-body">
@@ -70,7 +74,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title d-flex align-items-start justify-content-between">
+                        <div class="card-title d-flex align-items-start justify-content-between pb-0">
                             <div class="flex-shrink-0">
                                 <h6 class="text-uppercase">Meta próximo Ano</h6>
                             </div>
