@@ -25,7 +25,8 @@ class DespesaController extends Controller
         $despesas = Despesa::orderBy('categoria_despesa_id', 'ASC')->get();
 
         $soma_despesas = Despesa::where('tipo_gasto', 'Despesa')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
-        $soma_metas = Despesa::where('tipo_gasto', 'Meta')->orWhere('tipo_gasto', 'Despesa/Meta')->sum('valor_despesa');
+        $soma_metas = DespesaInfo::where('tipo_gasto', 'Meta')->orWhere('tipo_gasto', 'Despesa/Meta')->where('check_data_despesa', $data+1)->sum('valor_despesa');
+
 
         return view('app.despesas.despesa.despesa_index', compact('departamentos', 'categorias', 'metodos_pagamento', 'despesas', 'sub_categorias', 'soma_despesas', 'soma_metas'));
     }
