@@ -32,7 +32,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- Icon de Notificação -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown p-4">
-                @if ($data == '07')
+                @if ($data == '07' && $despesas != '')
                     <a class="nav-link dropdown-toggle hide-arrow" href="#" data-bs-toggle="dropdown">
                         <div class="avatar avatar-online">
                             <i class="bx bx-bell"></i>
