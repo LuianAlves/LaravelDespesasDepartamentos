@@ -59,7 +59,7 @@
                             <h6 class="text-uppercase">Despesa por categorias</h6>
                         </div>
                         <div class="p-0">
-                            <span class="badge bg-label-warning d-flex justify-content-end">
+                            <span class="badge bg-label-warning d-flex justify-content-end align-items-center">
                                 Ano {{ date('Y') }}
                             </span>
                         </div>
