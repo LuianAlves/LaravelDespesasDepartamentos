@@ -111,14 +111,91 @@ class DespesaController extends Controller
         return redirect()->back()->with($noti);
     }
 
-    public function edit($id)
-    {
+    public function show() {
         //
     }
 
-    public function update(Request $request, $id)
+    public function edit($id)
     {
-        //
+        $despesa = Despesa::findOrFail($id);
+
+        $departamentos = Departamento::get();
+        $categorias = CategoriaDespesa::get();
+        $sub_categorias = SubCategoriaDespesa::get();
+        $metodos_pagamento = MetodoPagamento::orderBy('metodo_pagamento')->get();
+
+
+        return view('app.despesas.despesa.despesa_edit', compact(
+            'despesa', 
+            'departamentos',
+            'categorias',
+            'sub_categorias',
+            'metodos_pagamento'
+        ));
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'departamento_id' => 'required',
+            'categoria_despesa_id' => 'required',
+            'sub_categoria_despesa_id' => 'required',
+            'metodo_pagamento_id' => 'required',
+            'tipo_gasto' => 'required',
+            'despesa' => 'required',
+            'valor_despesa' => 'required',
+        ], [
+            'departamento_id.required' => 'Selecione um Departamento para essa despesa.',
+            'categoria_despesa_id.required' => 'Selecione uma categoria para essa despesa.',
+            'sub_categoria_despesa_id.required' => 'Selecione uma sub categoria para essa despesa.',
+            'metodo_pagamento_id.required' => 'Selecione um método de pagamento para essa despesa.',
+            'tipo_gasto.required' => 'Selecione um tipo de gasto.',
+            'despesa.required' => 'Insira um nome para essa despesa.',
+            'valor_despesa.required' => 'Insira um valor para essa despesa.',
+        ]);
+
+        $valor_despesa = str_replace(',', '.', $request->valor_despesa);
+
+        $despesa = Despesa::findOrFail($request->despesa_id)->update([
+            'departamento_id' => $request->departamento_id,
+            'categoria_despesa_id' => $request->categoria_despesa_id,
+            'sub_categoria_despesa_id' => $request->sub_categoria_despesa_id,
+            'metodo_pagamento_id' => $request->metodo_pagamento_id,
+
+            'tipo_gasto' => $request->tipo_gasto,
+
+            'despesa' => $request->despesa,
+            'valor_despesa' => $valor_despesa,
+            'descricao_despesa' => $request->descricao_despesa,
+            'data_despesa' => $request->data_despesa,
+            'dia_despesa' => Carbon::parse($request->data_despesa)->format('d'),
+            'mes_despesa' => Carbon::parse($request->data_despesa)->format('m'),
+            'ano_despesa' => Carbon::parse($request->data_despesa)->format('Y'),
+
+            'updated_at' => Carbon::now()
+        ]);
+
+        $depart = Departamento::findOrFail($request->departamento_id);
+        $cat = CategoriaDespesa::findOrFail($request->categoria_despesa_id);
+
+        DespesaInfo::where('despesa_id', $request->despesa_id)->update([
+            'despesa_id' => $request->despesa_id,
+            'categoria_despesa_id' => $request->categoria_despesa_id,
+            'categoria_despesa' => $cat->categoria_despesa,
+            'departamento_id' => $request->departamento_id,
+            'departamento' => $depart->departamento,
+            'tipo_gasto' => $request->tipo_gasto,
+            'valor_despesa' => $valor_despesa,
+
+            'updated_at' => Carbon::now()
+        ]);
+
+        $noti = [
+            'message' => 'Despesa atualizada com sucesso!',
+            'alert-type' => 'info'
+        ];
+
+        return redirect()->route('despesa.index')->with($noti);
     }
 
     public function destroy($id)
