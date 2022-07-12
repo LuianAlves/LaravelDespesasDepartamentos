@@ -88,8 +88,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' 
 Route::get('/export/despesas', [DashboardController::class, 'exportDespesas'])->name('export.despesas');
 
 // Notificações Navbar
-Route::post('/check/despesas/{id}', [CheckDespesaController::class, 'check'])->name('check.despesa');
-Route::post('/remove/despesas/{id}', [CheckDespesaController::class, 'remove'])->name('remove.despesa');
+Route::get('/check/despesas/{id}', [CheckDespesaController::class, 'check'])->name('check.despesa');
+Route::get('/remove/despesas/{id}', [CheckDespesaController::class, 'remove'])->name('remove.despesa');
 
 // Preencher select subcategorias
 Route::get('/sub-categoria-despesa/ajax/{categoria_despesa_id}', [SubCategoriaDespesaController::class, 'getCategoria']); // AJAX
