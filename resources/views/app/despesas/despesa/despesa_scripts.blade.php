@@ -8,7 +8,7 @@
 
             if (categoria_despesa_id) {
                 $.ajax({
-                    url: "{{ url('/sub-categoria-despesa/ajax') }}/" + categoria_despesa_id,
+                    url: "{{ url('//sub-categoria-despesa/ajax') }}/" + categoria_despesa_id,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
