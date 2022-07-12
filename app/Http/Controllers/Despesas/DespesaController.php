@@ -18,6 +18,8 @@ class DespesaController extends Controller
 {
     public function index()
     {
+        $data = date('Y');
+        
         $departamentos = Departamento::orderBy('departamento', 'ASC')->get();
         $categorias = CategoriaDespesa::orderBy('categoria_despesa', 'ASC')->get();
         $sub_categorias = SubCategoriaDespesa::orderBy('sub_categoria_despesa', 'ASC')->get();
