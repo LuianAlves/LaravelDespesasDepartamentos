@@ -92,5 +92,5 @@ Route::get('/check/despesas/{id}', [CheckDespesaController::class, 'check'])->na
 Route::get('/remove/despesas/{id}', [CheckDespesaController::class, 'remove'])->name('remove.despesa');
 
 // Preencher select subcategorias
-Route::get('/sub-categoria-despesa/ajax/{categoria_despesa_id}', [SubCategoriaDespesaController::class, 'getCategoria']); // AJAX
+Route::get('/sub-categoria-despesa/ajax/{categoria_despesa_id}', [SubCategoriaDespesaController::class, 'getCategoria'])->name('sub-cat.ajax'); // AJAX
 
