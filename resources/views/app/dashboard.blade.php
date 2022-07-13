@@ -6,7 +6,7 @@
 @include('layouts.breadcrumb')
 
 <!-- First Row - Cards Count Despesas/Metas -->
-<div class="row">
+<div class="row my-3">
     <!-- Count Despesas Ano -->
     <div class="col-12 col-lg-8 col-md-7">
         <div class="card">
@@ -56,7 +56,7 @@
 </div>
 
 <!-- Second Row - Grafico Departamentos/TipoGastos -->
-<div class="row">
+<div class="row my-3">
     <div class="col-12 col-lg-8 col-md-7">
         <div class="card">
             <div class="card-header d-flex align-items-center justify-content-between pb-0">
@@ -75,9 +75,9 @@
         </div>
     </div>
     <div class="col-12 col-lg-4 col-md-5">
-        <div class="card">
+        <div class="card h-100">
             <div class="card-body">
-                <canvas id="chartTpGasto" height="auto"></canvas>
+                <canvas id="chartTpGasto" height="100%"></canvas>
             </div>
         </div>
     </div>
