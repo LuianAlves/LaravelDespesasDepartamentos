@@ -83,8 +83,8 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-12 col-lg-8 col-md-7 order-0">
+{{-- <div class="row"> --}}
+    {{-- <div class="col-12 col-lg-8 col-md-7 order-0"> --}}
         {{-- <!-- Count Despesas Ano -->
         <div class="row">
             <div class="col-12">
@@ -130,7 +130,7 @@
             </div>
         </div> --}}
 
-        <!-- Gráfico Gasto por Categorias -->
+        {{-- <!-- Gráfico Gasto por Categorias -->
         <div class="row my-3">
             <div class="col-12">
                 <div class="card">
@@ -149,8 +149,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> --}}
+    {{-- </div> --}}
 
     {{-- <div class="col-12 col-lg-4 col-md-5 order-1"> --}}
         {{-- <!-- Count Despesas próximo Ano -->
@@ -191,12 +191,76 @@
             </div>
         </div> --}}
     {{-- </div> --}}
+{{-- </div> --}}
+
+<!-- Thre Row - -->
+<div class="row">
+    <!-- Gráfico Gasto por Categorias -->
+    <div class="col-12 col-lg-8 col-md-7">
+        <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                <div class="flex-shrink-0">
+                    <h6 class="text-uppercase">Despesa por categorias</h6>
+                </div>
+                <div class="p-0">
+                    <span class="badge bg-label-warning d-flex justify-content-end align-items-center">
+                        Ano {{ date('Y') }}
+                    </span>
+                </div>
+            </div>
+            <div class="card-body">
+                <canvas id="chartCatDespesa" width="auto" height="auto"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detalhes de Despesas -->
+    <div class="col-12 col-lg-4 col-md-5" style="max-height: 800px; overflow-y: auto;">
+        <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="card-title m-0 me-2">Despesas Recentes</h5>
+                <div class="dropdown">
+                    <button class="btn p-0" type="button" id="transactionID" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
+                        <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <ul class="p-0 m-0">
+                    @php
+                        $despesas = App\Models\Despesas\Despesa::orderBy('data_despesa', 'ASC')->limit(30)->get();
+                    @endphp
+                    @foreach ($despesas as $despesa)
+                        <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <img src="../assets/img/icons/unicons/paypal.png" alt="User" class="rounded">
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <small class="text-muted d-block mb-1">{{$despesa->Departamento->departamento}}</small>
+                                    <h6 class="mb-0 text-truncate" style="max-width: 200px;">{{$despesa->despesa}}</h6>
+                                </div>
+                                <div class="user-progress d-flex align-items-center gap-1">
+                                    <h6 class="mb-0">{{$despesa->valor_despesa}}</h6>
+                                    <span class="text-muted">R$</span>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
-
-
-<div class="row">
-    <!-- 1 -->
+{{-- <div class="row"> --}}
+    {{-- <!-- 1 -->
     <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
         <div class="card h-100">
             <div class="card-header d-flex align-items-center justify-content-between pb-0">
@@ -898,9 +962,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <!-- 3 -->
+    {{-- <!-- 3 -->
     <div class="col-md-6 col-lg-4 order-2 mb-4" style="max-height: 800px; overflow-y: auto;" >
         <div class="card">
             <div class="card-header d-flex align-items-center justify-content-between">
@@ -942,9 +1006,9 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-</div>
+{{-- </div> --}}
 
 <!-- Configurações CHART JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
