@@ -32,7 +32,7 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- Icon de Notificação -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown p-4">
-                @if ($data == '07')
+                @if ($data == '07' && $despesas != '')
                     <a class="nav-link dropdown-toggle hide-arrow" href="#" data-bs-toggle="dropdown">
                         <div class="avatar avatar-online">
                             <i class="bx bx-bell"></i>
@@ -57,22 +57,14 @@ $despesas = App\Models\Despesas\DespesaInfo::where('tipo_gasto', 'Meta')->orWher
                                         <span class="text-success">R$ </span>
                                         {{ str_replace('.', ',', $despesa->valor_despesa) }}
                                     </span>
+                                    
+                                    <a href="{{url('https://bgorcamento.herokuapp.com/remove/despesas/'.$despesa->id)}}">
+                                        <i class="bx bx-message-square-x text-danger me-2"></i>
+                                    </a>
+                                    <a href="{{url('https://bgorcamento.herokuapp.com/check/despesas/'.$despesa->id)}}">
+                                        <i class="bx bx-message-square-check text-success me-2"></i>
+                                    </a>
 
-                                    <form id="form1_{{$despesa->id}}" action="{{url('https://bgorcamento.herokuapp.com/remove/despesas/'.$despesa->id)}}" method="post">
-                                        @csrf
-        
-                                            <a href="#" onclick="document.getElementById('form1_{{$despesa->id}}').submit()">
-                                                <i class="bx bx-message-square-x text-danger me-2"></i>
-                                            </a>
-                                    </form>
-
-                                    <form id="form_{{$despesa->id}}" action="{{url('https://bgorcamento.herokuapp.com/check/despesas/'.$despesa->id)}}" method="post">
-                                        @csrf
-        
-                                            <a href="#" onclick="document.getElementById('form_{{$despesa->id}}').submit()">
-                                                <i class="bx bx-message-square-check text-success me-2"></i>
-                                            </a>
-                                    </form>
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>

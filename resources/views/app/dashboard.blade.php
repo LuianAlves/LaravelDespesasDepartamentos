@@ -5,9 +5,87 @@
 {{-- Breadcrumb --}}
 @include('layouts.breadcrumb')
 
+<!-- First Row - Cards Count Despesas/Metas -->
+<div class="row">
+    <!-- Count Despesas Ano -->
+    <div class="col-12 col-lg-8 col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="flex-shrink-0">
+                        <h6 class="text-uppercase">Despesas Totais {{date('Y')}}</h6>
+                    </div>
+                    <div class="p-0">
+                        <a href="{{ route('export.despesas') }}"
+                            class="btn btn-sm btn-outline-success">Exportar</a>
+                    </div>
+                </div>
+                <div class="mt-sm-auto">
+                    <h3 class="mb-0"><strong>R$ </strong> <span class="text-muted">{{ str_replace('.', ',',
+                            $soma_despesas) }}</span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Count Despesas próximo Ano -->
+    <div class="col-12 col-lg-4 col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between pb-0">
+                    <div class="flex-shrink-0">
+                        <h6 class="text-uppercase">Meta próximo Ano</h6>
+                    </div>
+                    <div class="p-0">
+                        <span class="badge bg-label-danger rounded-pill d-flex justify-content-end">
+                            @php $ano_atual = date('Y'); @endphp
+                            Ano {{ $ano_atual + 1 }}
+                        </span>
+                    </div>
+                </div>
+                <div class="mt-sm-auto">
+                    <h3 class="mb-0"><strong>R$ </strong> <span class="text-muted">{{ str_replace('.', ',',
+                            $soma_metas)
+                            }}</span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Second Row - Grafico Departamentos/TipoGastos -->
+<div class="row">
+    <div class="col-12 col-lg-8 col-md-7">
+        <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                <div class="flex-shrink-0">
+                    <h6 class="text-uppercase">Despesa por departamentos</h6>
+                </div>
+                <div class="p-0">
+                    <span class="badge bg-label-warning d-flex justify-content-end">
+                        Ano {{ date('Y') }}
+                    </span>
+                </div>
+            </div>
+            <div class="card-body">
+                <canvas id="chartDepartamentos"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-4 col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <canvas id="chartTpGasto" height="auto"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-12 col-lg-8 col-md-7 order-0">
-        <!-- Count Despesas Ano -->
+        {{-- <!-- Count Despesas Ano -->
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -29,8 +107,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Gráfico Gasto por Departamentos -->
+        </div> --}}
+
+        {{-- <!-- Gráfico Gasto por Departamentos -->
         <div class="row my-3">
             <div class="col-12">
                 <div class="card">
@@ -49,7 +128,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+
         <!-- Gráfico Gasto por Categorias -->
         <div class="row my-3">
             <div class="col-12">
@@ -72,8 +152,8 @@
         </div>
     </div>
 
-    <div class="col-12 col-lg-4 col-md-5 order-1">
-        <!-- Count Despesas próximo Ano -->
+    {{-- <div class="col-12 col-lg-4 col-md-5 order-1"> --}}
+        {{-- <!-- Count Despesas próximo Ano -->
         <div class="row mb-3">
             <div class="col-12">
                 <div class="card">
@@ -98,8 +178,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Gráfico Tipo de Gasto -->
+        </div> --}}
+
+        {{-- <!-- Gráfico Tipo de Gasto -->
         <div class="row mb-3">
             <div class="col-12">
                 <div class="card">
@@ -108,8 +189,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> --}}
+    {{-- </div> --}}
 </div>
 
 

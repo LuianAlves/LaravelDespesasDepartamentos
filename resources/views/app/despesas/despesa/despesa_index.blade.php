@@ -239,9 +239,12 @@
                                                 <i class="bx bx-dots-vertical-rounded"></i>
                                             </button>
                                             <div class="dropdown-menu">
-                                               
+                                                <a href="{{url('https://bgorcamento.herokuapp.com/despesa/editar/'.$despesa->id)}}" class="dropdown-item">
+                                                    <i class="bx bx-edit text-secondary me-1"></i>
+                                                    Editar Despesa
+                                                </a>
                                                 <a href="{{url('https://bgorcamento.herokuapp.com/despesa/remover/'.$despesa->id)}}" class="dropdown-item">
-                                                    <i class="bx bx-trash text-danger me-1"></i>
+                                                    <i class="bx bx-trash text-secondary me-1"></i>
                                                     Apagar Despesa
                                                 </a>
                                             
