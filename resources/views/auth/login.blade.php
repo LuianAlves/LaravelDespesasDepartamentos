@@ -8,7 +8,7 @@
         <h4 class="mb-2 text-center">Sistema Orçamentário 🤑</h4>
         <p class="mb-4 text-center">Faça Login para iniciar seu Orçamento !!</p>
 
-        <form id="formAuthentication" class="mb-3" action="{{url('https://bgorcamento.herokuapp.com/login')}}"
+        <form id="formAuthentication" class="mb-3" action="{{route('login')}}"
             method="POST">
             @csrf
 

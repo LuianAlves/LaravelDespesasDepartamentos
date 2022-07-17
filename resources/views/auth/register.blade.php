@@ -6,7 +6,7 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ url('https://bgorcamento.herokuapp.com/register') }}">
+        <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <div>
@@ -58,3 +58,5 @@
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
+
+
