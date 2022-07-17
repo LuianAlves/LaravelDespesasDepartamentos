@@ -48,7 +48,12 @@
                 <button class="btn btn-primary d-grid w-100" type="submit">Acessar</button>
             </div>
         </form>
-
+        <p class="text-center">
+            <span>Não está registrado?</span>
+            <a href="{{route('register')}}">
+              <span>Cadastre-se agora</span>
+            </a>
+          </p>
     </div>
 </div>
 @endsection

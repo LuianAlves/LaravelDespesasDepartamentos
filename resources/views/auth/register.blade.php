@@ -1,62 +1,61 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.layout_auth')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('content_auth')
+<div class="card">
+    <div class="card-body">
 
-        <form method="POST" action="{{ route('register') }}">
+        <!-- /Logo -->
+        <h4 class="mb-2 text-center">Sistema Orçamentário 🤑</h4>
+        <p class="mb-4 text-center">Cadastre-se para iniciar seu Orçamento !!</p>
+
+        <form class="mb-3" action="{{route('register')}}" method="POST">
             @csrf
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <div class="mb-3">
+                <label for="login" class="form-label">Nome de usuário</label>
+                <input type="text" class="form-control" id="name" name="name" :value="old('name')" placeholder="Nome de usuário" autofocus />
+                @error('name')
+                    <small class="text-danger fw-bold">{{$message}}</small>   
+                @enderror
             </div>
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <div class="mb-3">
+                <label for="login" class="form-label">Endereço de E-mail</label>
+                <input type="text" class="form-control" id="email" name="email" :value="old('email')" placeholder="E-mail" autofocus />
+                @error('email')
+                    <small class="text-danger fw-bold">{{$message}}</small>   
+                @enderror
             </div>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
+            <div class="mb-3 form-password-toggle">
+                <label class="form-label" for="password">Senha</label>
+                <div class="input-group input-group-merge">
+                    <input type="password" id="password" class="form-control" name="password"
+                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                        aria-describedby="password" autocomplete="current-password" />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
-            @endif
+                @error('password')
+                    <small class="text-danger fw-bold">{{$message}}</small>   
+                @enderror
+            </div>
+            <div class="mb-3 form-password-toggle">
+                <label class="form-label" for="password_confirmation">Confirmar senha</label>
+                <div class="input-group input-group-merge">
+                    <input type="password" id="password_confirmation" class="form-control" name="password_confirmation"
+                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                        aria-describedby="password_confirmation" autocomplete="current-password" />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                </div>
+                @error('password_confirmation')
+                    <small class="text-danger fw-bold">{{$message}}</small>   
+                @enderror
+            </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
+            <div class="mb-3">
+                <button class="btn btn-primary d-grid w-100" type="submit">Cadastrar</button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
-
-
+    </div>
+</div>
+@endsection
